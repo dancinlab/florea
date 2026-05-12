@@ -60,11 +60,11 @@ aesthetic-device-class, anti-aging actives).
 ## Install
 
 ```bash
-# 1. Install hexa-lang (ships `hexa` + `hx` package manager)
+# 1. Install hexa-lang (gives you `hexa` + `hx` package manager)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dancinlab/hexa-lang/main/install.sh)"
 
 # 2. Install florea
-hx install florea          # global, pulls latest from registry
+hx install florea
 ```
 
 ## Run
