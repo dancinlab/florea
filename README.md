@@ -71,13 +71,16 @@ florea selftest
 
 ## Origin
 
-Migrated from `dancinlab/hexa-medic` (cycle-30++++++ decomposition,
-2026-05-12) — see [`dancinlab/hexa-bio`](https://github.com/dancinlab/hexa-bio)
+Migrated from the (now-deleted) `dancinlab/hexa-medic` 24-verb library
+(cycle-30++++++ decomposition, 2026-05-12). `hexa-medic` repo was fully
+decomposed (24 → 0 verbs) and removed; per-file canon@ded52144 lineage
+annotations preserved in each verb's frontmatter. See [`dancinlab/hexa-bio`](https://github.com/dancinlab/hexa-bio)
 `DECOMPOSITION_PLAN.md` for the full hexa-medic → Floréa + hexa-bio +
-deletion split rationale.
+hexa-matter + deletion split rationale.
 
 ## Cross-link
 
 - Family root: [`dancinlab/hexa-meta`](https://github.com/dancinlab/hexa-meta)
-- Sibling: [`dancinlab/hexa-medic`](https://github.com/dancinlab/hexa-medic) — therapeutic medicine substrate (post-decomposition)
+- Sibling: ~~`dancinlab/hexa-medic`~~ — **DELETED 2026-05-12**; was the
+  source repo for 6 of Floréa's 7 verbs before full decomposition
 - Sibling: [`dancinlab/hexa-bio`](https://github.com/dancinlab/hexa-bio) — 5-axis drug-discovery framework
