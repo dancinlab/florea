@@ -57,14 +57,24 @@ aesthetic-device-class, anti-aging actives).
 
 ---
 
-## Usage
+## Install
 
 ```bash
-florea cosmetic_surgery
-florea hair_regeneration
-florea perfumery
-florea list
-florea selftest
+# 1. Install hexa-lang (ships `hexa` + `hx` package manager)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dancinlab/hexa-lang/main/install.sh)"
+
+# 2. Install florea
+hx install florea          # global, pulls latest from registry
+```
+
+## Run
+
+```bash
+florea list             # verb table
+florea selftest         # 7-verb spec presence sweep
+florea <verb>           # read a verb spec (cosmetic_surgery / hair_regeneration / mens_intimate_cleanser / perfumery / skincare / tattoo_removal / womens_intimate_cleanser)
+florea version          # print version
+florea help             # full help (subcommands + flags + env)
 ```
 
 ---
