@@ -1,7 +1,7 @@
 #!hexa strict
 // florea/cli/florea.hexa — standalone florea CLI router (🌸)
 //
-// 6-verb cosmetic·aesthetic·skincare·perfumery substrate dispatcher.
+// 7-verb cosmetic·aesthetic·skincare·perfumery substrate dispatcher.
 
 let VERSION = "0.1.0"
 
@@ -23,12 +23,13 @@ fn verb_spec(verb: str) -> str {
     if verb == "hair_regeneration" { return FL + "/hair-regeneration/hair-regeneration.md" }
     if verb == "mens_intimate_cleanser" { return FL + "/mens-intimate-cleanser/mens-intimate-cleanser.md" }
     if verb == "perfumery" { return FL + "/perfumery/perfumery.md" }
+    if verb == "skincare" { return FL + "/skincare/skincare.md" }
     if verb == "tattoo_removal" { return FL + "/tattoo-removal/tattoo-removal.md" }
     if verb == "womens_intimate_cleanser" { return FL + "/womens-intimate-cleanser/womens-intimate-cleanser.md" }
     return ""
 }
 
-let VERBS = ["cosmetic_surgery", "hair_regeneration", "mens_intimate_cleanser", "perfumery", "tattoo_removal", "womens_intimate_cleanser"]
+let VERBS = ["cosmetic_surgery", "hair_regeneration", "mens_intimate_cleanser", "perfumery", "skincare", "tattoo_removal", "womens_intimate_cleanser"]
 
 fn shq(s: str) -> str {
     return "'" + s.replace("'", "'\\''") + "'"
@@ -61,26 +62,26 @@ fn _file_exists(p: str) -> bool {
 
 fn cmd_list(a: [str]) {
     if json_mode(a) {
-        let mut js = "{\"florea\":\"" + VERSION + "\",\"verbs_total\":6,"
-        js = js + "\"verbs\":[\"cosmetic_surgery\",\"hair_regeneration\",\"mens_intimate_cleanser\",\"perfumery\",\"tattoo_removal\",\"womens_intimate_cleanser\"],"
+        let mut js = "{\"florea\":\"" + VERSION + "\",\"verbs_total\":7,"
+        js = js + "\"verbs\":[\"cosmetic_surgery\",\"hair_regeneration\",\"mens_intimate_cleanser\",\"perfumery\",\"skincare\",\"tattoo_removal\",\"womens_intimate_cleanser\"],"
         js = js + "\"verdict\":\"SPEC_CATALOG_ONLY\"}"
         println(js)
         return
     }
-    println("florea " + VERSION + " — 6-verb cosmetic·aesthetic·skincare·perfumery substrate (🌸)")
+    println("florea " + VERSION + " — 7-verb cosmetic·aesthetic·skincare·perfumery substrate (🌸)")
     println("")
     for v in VERBS { println("  " + v) }
     println("")
     println("  to read a verb spec:")
     println("    florea <verb>          (prints verb spec path + first lines)")
-    println("    florea selftest        (6-verb spec presence sweep)")
+    println("    florea selftest        (7-verb spec presence sweep)")
 }
 
 fn cmd_verb(verb: str, a: [str]) {
     let spec = verb_spec(verb)
     if spec == "" {
         eprintln("florea: unknown verb '" + verb + "'")
-        eprintln("run 'florea list' for the 6-verb table")
+        eprintln("run 'florea list' for the 7-verb table")
         _audit(verb, "unknown", 2)
         exit(2)
     }
@@ -136,16 +137,16 @@ fn cmd_version() {
 }
 
 fn cmd_help() {
-    println("florea " + VERSION + " — 6-verb cosmetic·aesthetic·skincare·perfumery substrate CLI (🌸)")
+    println("florea " + VERSION + " — 7-verb cosmetic·aesthetic·skincare·perfumery substrate CLI (🌸)")
     println("")
     println("usage: florea <subcmd> [flags...]")
     println("")
-    println("verb subcommands (24 total — see 'florea list'):")
+    println("verb subcommands (7 total — see 'florea list'):")
     for v in VERBS { println("  " + v) }
     println("")
     println("utility subcommands:")
     println("  list             verb table")
-    println("  selftest         6-verb spec presence sweep")
+    println("  selftest         7-verb spec presence sweep")
     println("")
     println("global flags:")
     println("  --version        show version")

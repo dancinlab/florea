@@ -9,13 +9,14 @@ family      = "hexa"   # HEXA n=6 invariant-lattice family member (no hexa- pref
 substrate   = "cosmetic·aesthetic·skincare·perfumery"
 description = "🌸 Floréa — n=6 cosmetic/aesthetic substrate, decomposed from hexa-medic 2026-05-12"
 
-# ── Verb manifest (6 verbs) ──────────────
+# ── Verb manifest (7 verbs) ──────────────
 verb_parent = "."
 [verbs]
 cosmetic_surgery        = ["cosmetic-surgery"]
 hair_regeneration       = ["hair-regeneration"]
 mens_intimate_cleanser  = ["mens-intimate-cleanser"]
 perfumery               = ["perfumery"]
+skincare                = ["skincare"]
 tattoo_removal          = ["tattoo-removal"]
 womens_intimate_cleanser = ["womens-intimate-cleanser"]
 

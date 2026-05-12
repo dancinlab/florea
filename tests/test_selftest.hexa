@@ -1,5 +1,5 @@
 #!hexa strict
-// tests/test_selftest.hexa — 6-verb spec-presence harness
+// tests/test_selftest.hexa — 7-verb spec-presence harness
 
 fn main() {
     let root = env("FLOREA_ROOT")
@@ -12,13 +12,13 @@ fn main() {
         println(raw.trim())
         exit(1)
     }
-    if raw.contains("total verbs: 6") == false {
-        println("test_selftest: FAIL (verb count != 6)")
+    if raw.contains("total verbs: 7") == false {
+        println("test_selftest: FAIL (verb count != 7)")
         exit(1)
     }
-    if raw.contains("present:     6/6") == false {
-        println("test_selftest: FAIL (presence != 6/6)")
+    if raw.contains("present:     7/7") == false {
+        println("test_selftest: FAIL (presence != 7/7)")
         exit(1)
     }
-    println("test_selftest: PASS — 6/6 cosmetic·aesthetic·skincare·perfumery verb specs present")
+    println("test_selftest: PASS — 7/7 cosmetic·aesthetic·skincare·perfumery verb specs present")
 }

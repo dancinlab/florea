@@ -1,13 +1,13 @@
-# 🌸 Floréa — n=6 cosmetic·aesthetic·skincare substrate (6-verb library)
+# 🌸 Floréa — n=6 cosmetic·aesthetic·skincare substrate (7-verb library)
 
-> 6-verb cosmetic·aesthetic·skincare·perfumery substrate organized as a closed-form spec catalog.
-> Each verb is a directory of canonical specs migrated from `hexa-medic`
-> on 2026-05-12. Member of the **HEXA family** (`n=6` invariant lattice),
-> standalone brand (no `hexa-` prefix, Lumière style).
+> 7-verb cosmetic·aesthetic·skincare·perfumery substrate organized as a closed-form spec catalog.
+> Verbs migrated from `hexa-medic` (6 verbs) + `hexa-bio` electronic-skin
+> (1 verb: skincare) on 2026-05-12. Member of the **HEXA family**
+> (`n=6` invariant lattice), standalone brand (no `hexa-` prefix, Lumière style).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-informational.svg)](hexa.toml)
-[![Verbs](https://img.shields.io/badge/verbs-6-blue.svg)](#verbs)
+[![Verbs](https://img.shields.io/badge/verbs-7-blue.svg)](#verbs)
 [![n=6 lattice](https://img.shields.io/badge/n=6-σ·φ_=_n·τ_=_24-blue.svg)](#n6-master-identity)
 
 ---
@@ -37,6 +37,7 @@ GitHub URL slug: `dancinlab/florea` (no accent in URL); display name: **Floréa*
 | `hair_regeneration` | [hair-regeneration/hair-regeneration.md](hair-regeneration/hair-regeneration.md) | spec |
 | `mens_intimate_cleanser` | [mens-intimate-cleanser/mens-intimate-cleanser.md](mens-intimate-cleanser/mens-intimate-cleanser.md) | spec |
 | `perfumery` | [perfumery/perfumery.md](perfumery/perfumery.md) | spec |
+| `skincare` | [skincare/skincare.md](skincare/skincare.md) | spec (ex-hexa-skin electronic-skin substrate; cosmetic 측면 흡수) |
 | `tattoo_removal` | [tattoo-removal/tattoo-removal.md](tattoo-removal/tattoo-removal.md) | spec |
 | `womens_intimate_cleanser` | [womens-intimate-cleanser/womens-intimate-cleanser.md](womens-intimate-cleanser/womens-intimate-cleanser.md) | spec |
 
@@ -49,9 +50,10 @@ GitHub URL slug: `dancinlab/florea` (no accent in URL); display name: **Floréa*
 12   ·  2   = 6 ·  4   = 24
 ```
 
-6 cosmetic verbs at v0.1.0 (initial migration). Future v1.x may expand
-toward σ(6)=12 cosmetic surface verbs (skincare actives, makeup chemistry,
-fragrance composition, body-care, hair-coloring, aesthetic-device-class).
+7 cosmetic verbs at v0.1.0 (initial migration + hexa-skin absorption).
+Future v1.x may expand toward σ(6)=12 cosmetic surface verbs (makeup
+chemistry, fragrance composition, body-care, hair-coloring,
+aesthetic-device-class, anti-aging actives).
 
 ---
 
