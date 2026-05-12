@@ -1,0 +1,194 @@
+#!hexa strict
+// florea/cli/florea.hexa — standalone florea CLI router (🌸)
+//
+// 6-verb cosmetic·aesthetic·skincare·perfumery substrate dispatcher.
+
+let VERSION = "0.1.0"
+
+let HOME = env("HOME")
+let FLOREA_ROOT_ENV = env("FLOREA_ROOT")
+
+fn hexa_root() -> str {
+    if FLOREA_ROOT_ENV.len() > 0 { return FLOREA_ROOT_ENV }
+    let inferred = exec("dirname \"$(dirname \"$0\")\" 2>/dev/null || true").trim()
+    if inferred.len() > 0 { return inferred }
+    return HOME + "/.florea"
+}
+
+let FL = hexa_root()
+let LOG_PATH = FL + "/state/florea_cli.log"
+
+fn verb_spec(verb: str) -> str {
+    if verb == "cosmetic_surgery" { return FL + "/cosmetic-surgery/cosmetic-surgery.md" }
+    if verb == "hair_regeneration" { return FL + "/hair-regeneration/hair-regeneration.md" }
+    if verb == "mens_intimate_cleanser" { return FL + "/mens-intimate-cleanser/mens-intimate-cleanser.md" }
+    if verb == "perfumery" { return FL + "/perfumery/perfumery.md" }
+    if verb == "tattoo_removal" { return FL + "/tattoo-removal/tattoo-removal.md" }
+    if verb == "womens_intimate_cleanser" { return FL + "/womens-intimate-cleanser/womens-intimate-cleanser.md" }
+    return ""
+}
+
+let VERBS = ["cosmetic_surgery", "hair_regeneration", "mens_intimate_cleanser", "perfumery", "tattoo_removal", "womens_intimate_cleanser"]
+
+fn shq(s: str) -> str {
+    return "'" + s.replace("'", "'\\''") + "'"
+}
+
+fn has_flag(a: [str], flag: str) -> bool {
+    for x in a {
+        if x == flag { return true }
+    }
+    return false
+}
+
+fn json_mode(a: [str]) -> bool {
+    return has_flag(a, "--json")
+}
+
+fn _ts_now() -> str { return exec("date -u '+%Y-%m-%dT%H:%M:%SZ'").trim() }
+
+fn _audit(subcmd: str, args_str: str, exit_code: int) {
+    let line = "{\"ts\":\"" + _ts_now() + "\",\"caller\":\"florea_standalone\",\"subcmd\":\"florea " +
+               subcmd + "\",\"exit_code\":" + str(exit_code) + ",\"version\":\"" + VERSION + "\"}"
+    exec("mkdir -p " + shq(FL + "/state") + " 2>/dev/null")
+    exec("echo " + shq(line) + " >> " + shq(LOG_PATH) + " 2>/dev/null")
+}
+
+fn _file_exists(p: str) -> bool {
+    let r = exec("[ -f " + shq(p) + " ] && echo yes || echo no").trim()
+    return r == "yes"
+}
+
+fn cmd_list(a: [str]) {
+    if json_mode(a) {
+        let mut js = "{\"florea\":\"" + VERSION + "\",\"verbs_total\":6,"
+        js = js + "\"verbs\":[\"cosmetic_surgery\",\"hair_regeneration\",\"mens_intimate_cleanser\",\"perfumery\",\"tattoo_removal\",\"womens_intimate_cleanser\"],"
+        js = js + "\"verdict\":\"SPEC_CATALOG_ONLY\"}"
+        println(js)
+        return
+    }
+    println("florea " + VERSION + " — 6-verb cosmetic·aesthetic·skincare·perfumery substrate (🌸)")
+    println("")
+    for v in VERBS { println("  " + v) }
+    println("")
+    println("  to read a verb spec:")
+    println("    florea <verb>          (prints verb spec path + first lines)")
+    println("    florea selftest        (6-verb spec presence sweep)")
+}
+
+fn cmd_verb(verb: str, a: [str]) {
+    let spec = verb_spec(verb)
+    if spec == "" {
+        eprintln("florea: unknown verb '" + verb + "'")
+        eprintln("run 'florea list' for the 6-verb table")
+        _audit(verb, "unknown", 2)
+        exit(2)
+    }
+    let present = _file_exists(spec)
+    println("florea " + verb + " — cosmetic·aesthetic·skincare·perfumery substrate (v" + VERSION + " spec)")
+    println("  spec_path: " + spec)
+    if present == false {
+        eprintln("  status: MISSING")
+        _audit(verb, "missing", 1)
+        exit(1)
+    }
+    println("  status: PRESENT")
+    println("  --- first 20 lines ---")
+    let head = exec("head -20 " + shq(spec) + " 2>/dev/null")
+    println(head.trim())
+    println("  ----------------------")
+    if json_mode(a) {
+        let mut js = "{\"florea\":\"" + VERSION + "\",\"verb\":\"" + verb + "\",\"present\":true}"
+        println(js)
+    }
+    _audit(verb, "", 0)
+}
+
+fn cmd_selftest(a: [str]) {
+    let mut ok = 0
+    let mut miss: [str] = []
+    for v in VERBS {
+        let spec = verb_spec(v)
+        if _file_exists(spec) { ok = ok + 1 } else { miss = miss + [v] }
+    }
+    let total = len(VERBS)
+    println("florea selftest — verb-spec presence sweep")
+    println("  total verbs: " + str(total))
+    println("  present:     " + str(ok) + "/" + str(total))
+    if ok == total {
+        println("__FLOREA_SELFTEST__ PASS")
+        if json_mode(a) {
+            println("{\"florea\":\"" + VERSION + "\",\"verdict\":\"PASS\",\"present\":" + str(ok) + ",\"total\":" + str(total) + "}")
+        }
+        _audit("selftest", "", 0)
+        return
+    }
+    println("__FLOREA_SELFTEST__ FAIL")
+    for m in miss { println("  missing: " + m) }
+    _audit("selftest", "", 1)
+    exit(1)
+}
+
+fn cmd_version() {
+    println("florea " + VERSION)
+    println("license: MIT")
+    println("repo:    https://github.com/dancinlab/florea")
+}
+
+fn cmd_help() {
+    println("florea " + VERSION + " — 6-verb cosmetic·aesthetic·skincare·perfumery substrate CLI (🌸)")
+    println("")
+    println("usage: florea <subcmd> [flags...]")
+    println("")
+    println("verb subcommands (24 total — see 'florea list'):")
+    for v in VERBS { println("  " + v) }
+    println("")
+    println("utility subcommands:")
+    println("  list             verb table")
+    println("  selftest         6-verb spec presence sweep")
+    println("")
+    println("global flags:")
+    println("  --version        show version")
+    println("  --json           machine-parseable JSON tail")
+    println("  --help, -h       this help")
+    println("")
+    println("env:")
+    println("  FLOREA_ROOT       override repo root")
+}
+
+fn main() {
+    let _raw = args()
+    let mut _sidx = -1
+    let mut _i = 0
+    while _i < _raw.len() {
+        if _raw[_i].ends_with(".hexa") { _sidx = _i; break }
+        _i = _i + 1
+    }
+    let mut _user_start = 2
+    if _sidx >= 0 { _user_start = _sidx + 1 }
+
+    let mut a: [str] = ["florea_cli", "florea_router"]
+    let mut _ua = _user_start
+    while _ua < _raw.len() {
+        a = a + [_raw[_ua]]
+        _ua = _ua + 1
+    }
+    let n = len(a)
+
+    if n < 3 { cmd_help(); return }
+
+    let sub = a[2]
+
+    if sub == "--version" || sub == "-V" || sub == "version" { cmd_version(); return }
+    if has_flag(a, "--help") || has_flag(a, "-h") { cmd_help(); return }
+    if sub == "help"      { cmd_help(); return }
+    if sub == "list"      { cmd_list(a); return }
+    if sub == "selftest"  { cmd_selftest(a); return }
+
+    if verb_spec(sub) != "" { cmd_verb(sub, a); return }
+
+    eprintln("florea: unknown subcommand '" + sub + "'")
+    eprintln("run 'florea help' or 'florea list' for usage")
+    _audit(sub, "", 2)
+    exit(2)
+}

@@ -1,0 +1,24 @@
+# hexa.toml — Floréa manifest (HEXA family member, standalone brand)
+
+[package]
+name        = "florea"
+display     = "Floréa"
+emoji       = "🌸"
+version     = "0.1.0"
+family      = "hexa"   # HEXA n=6 invariant-lattice family member (no hexa- prefix)
+substrate   = "cosmetic·aesthetic·skincare·perfumery"
+description = "🌸 Floréa — n=6 cosmetic/aesthetic substrate, decomposed from hexa-medic 2026-05-12"
+
+# ── Verb manifest (6 verbs) ──────────────
+verb_parent = "."
+[verbs]
+cosmetic_surgery        = ["cosmetic-surgery"]
+hair_regeneration       = ["hair-regeneration"]
+mens_intimate_cleanser  = ["mens-intimate-cleanser"]
+perfumery               = ["perfumery"]
+tattoo_removal          = ["tattoo-removal"]
+womens_intimate_cleanser = ["womens-intimate-cleanser"]
+
+[dependencies]
+hexa-lang = ">=1.0.0"
+python    = ">=3.10"

@@ -1,0 +1,24 @@
+#!hexa strict
+// tests/test_selftest.hexa — 6-verb spec-presence harness
+
+fn main() {
+    let root = env("FLOREA_ROOT")
+    let mut p = "cli/florea.hexa"
+    if root.len() > 0 { p = root + "/cli/florea.hexa" }
+
+    let raw = exec("FLOREA_ROOT=" + root + " hexa run " + p + " selftest 2>&1")
+    if raw.contains("__FLOREA_SELFTEST__ PASS") == false {
+        println("test_selftest: FAIL (sentinel missing)")
+        println(raw.trim())
+        exit(1)
+    }
+    if raw.contains("total verbs: 6") == false {
+        println("test_selftest: FAIL (verb count != 6)")
+        exit(1)
+    }
+    if raw.contains("present:     6/6") == false {
+        println("test_selftest: FAIL (presence != 6/6)")
+        exit(1)
+    }
+    println("test_selftest: PASS — 6/6 cosmetic·aesthetic·skincare·perfumery verb specs present")
+}

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Floréa in academic work, please cite as below."
+title: "Floréa: HEXA family substrate (n=6 invariant lattice, cosmetic·aesthetic·skincare·perfumery)"
+authors:
+  - family-names: 박
+    given-names: 민우
+    alias: need-singularity
+version: "0.1.0"
+date-released: "2026-05-12"
+url: "https://github.com/dancinlab/florea"
+license: MIT
+keywords:
+  - n=6
+  - hexa-family
+  - cosmetic
+  - aesthetic
+  - skincare
+  - perfumery
+  - hair-regeneration
+  - cosmetic-surgery

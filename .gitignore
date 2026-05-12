@@ -1,0 +1,7 @@
+state/*.log
+state/florea_cli.log
+.DS_Store
+__pycache__/
+*.pyc
+.lake/
+.venv/
