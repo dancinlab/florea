@@ -29,20 +29,6 @@ GitHub URL slug: `dancinlab/florea` (no accent in URL); display name: **Floréa*
 
 ---
 
-## Verbs
-
-| Verb | Spec | Status |
-|------|------|--------|
-| `cosmetic_surgery` | [cosmetic-surgery/cosmetic-surgery.md](cosmetic-surgery/cosmetic-surgery.md) | spec |
-| `hair_regeneration` | [hair-regeneration/hair-regeneration.md](hair-regeneration/hair-regeneration.md) | spec |
-| `mens_intimate_cleanser` | [mens-intimate-cleanser/mens-intimate-cleanser.md](mens-intimate-cleanser/mens-intimate-cleanser.md) | spec |
-| `perfumery` | [perfumery/perfumery.md](perfumery/perfumery.md) | spec |
-| `skincare` | [skincare/skincare.md](skincare/skincare.md) | spec (ex-hexa-skin electronic-skin substrate; cosmetic 측면 흡수) |
-| `tattoo_removal` | [tattoo-removal/tattoo-removal.md](tattoo-removal/tattoo-removal.md) | spec |
-| `womens_intimate_cleanser` | [womens-intimate-cleanser/womens-intimate-cleanser.md](womens-intimate-cleanser/womens-intimate-cleanser.md) | spec |
-
----
-
 ## n=6 master identity
 
 ```
