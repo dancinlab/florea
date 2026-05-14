@@ -1,0 +1,107 @@
+#!/usr/bin/env tape
+# ══════════════════════════════════════════════════════════════════════
+# .tape v1.2 — grammar primer (cold-read by any LLM / agent / human)
+# ══════════════════════════════════════════════════════════════════════
+# Form: each entry is `@<type> <id> := "<subject>" :: <kind> [<grades>]`
+#       optionally followed by body lines (2-space indent) — key=value,
+#       edges (<- -> => …), or quoted prose.
+#
+# ENTRY TYPES (17):
+#   Runtime (10): @S session  @U user  @A assistant  @T tool-call  @R result
+#                 @H hook  @D decision  @K cost  @P provider  @? anomaly
+#   Foundation:   @I identity-claim
+#   Declarative:  @X external-citation  @F forbidden-pattern  @N note
+#                 @C config  @L layout  @V spec-version
+#
+# EDGES (12, on body lines, 2-space indent):
+#   Causal:     <- caused-by   -> triggers   == continues
+#               ~> supersedes  !! aborts     |> verified-by
+#   Effect:     => produces (followed by quoted natural-language)
+#   Structural: <: specializes  :> generalizes  ?> soft-depends
+#               !> conflicts-with  @> projects-to (e.g. @> AGENTS.md)
+#
+# GRADE TAGS (in [...] on entry header):
+#   Delivery:   ok · err · denied · cancelled · partial · superseded
+#   Governance: required · recommended · optional · draft · active · deprecated
+#   Scoped:     allow:<x> · deny:<x>
+#   Time/index: T<n> (turn)  N<n> (wall-sec)  d=<YYYY-MM-DD>
+#
+# PAYLOAD SYNTAX (body lines):
+#   key = "value"           single-line string
+#   key = [a, b, c]         array literal
+#   key <<~EOF              heredoc (multi-line; ends with EOF on own line)
+#     multi-line text
+#   EOF
+#   "see [@x1] §3"          inline citation by entry id
+#   `cmd or path`           backtick code-span (inline only)
+#
+# Full spec: ~/core/tape/spec/tape.md (or github.com/dancinlab/tape)
+# ══════════════════════════════════════════════════════════════════════
+
+@V := "tape" :: spec [active]
+  version = "1.2"
+
+@I id001 := "florea" :: identity-claim [d=2026-05-14 active]
+  kind = "🌸 cosmetic · aesthetic · skincare · perfumery substrate · 7-verb library"
+  brief = "HEXA-family standalone brand (Lumière style · no hexa- prefix) · 7 verbs migrated from hexa-medic + hexa-bio · n=6 invariant"
+  parent = "dancinlab"
+  visibility = "PUBLIC · MIT"
+  origin = "verbs migrated from hexa-medic (6) + hexa-bio electronic-skin (1: skincare) on 2026-05-12"
+  brand-convention = "standalone-brand (like Lumière camera-filter · Pâtisserie bakery) — HEXA member without hexa- prefix"
+
+@I id002 := "florea.verbs" :: identity-claim [d=2026-05-14 active]
+  <: id001
+  count = "7"
+  domains = [cosmetic-surgery, aesthetic-skincare, hair-regeneration, perfumery, body-care, aesthetic-procedures, electronic-skin]
+  matches = "n=6 invariant lattice (σ·φ = n·τ = 24)"
+
+@D g_inherit := "inherits-lattice-policy" :: governance [required]
+  rule = "All echoes/LATTICE_POLICY.md rules apply (real-limits-first · lattice-is-tool · honesty-external)."
+  authority = "[@x_lattice_policy]"
+  @> AGENTS.md
+
+@D g_brand_no_hexa_prefix := "standalone-brand-naming" :: governance [required]
+  rule = "florea ships as standalone brand (no hexa- prefix) — Lumière / Pâtisserie style."
+  why = "consumer-facing brand · not a technical substrate ID"
+  cohort = "[Lumière (camera filter), Pâtisserie (bakery), Floréa (cosmetic)]"
+  @> AGENTS.md
+
+@D g_honesty_obligation_skincare := "honesty-on-cosmetic-claims" :: governance [required deny:write]
+  rule = "Cosmetic / skincare efficacy claims must cite the actual underlying biology / chemistry, NOT the n=6 lattice."
+  why = "raw#10 C3 — external biology has its own invariants (Fitzpatrick scale · NMF profile · stratum corneum kinetics · etc.)"
+  authority = "[@x_lattice_policy] §1.3"
+  @> AGENTS.md
+
+@D g_commit_conventions := "commit-trailer-coauthor" :: governance [recommended]
+  rule = "AI-assisted commits include `Co-Authored-By: <model> <noreply@anthropic.com>` trailer; Conventional Commits title."
+  @> AGENTS.md
+
+@F f1 := "lattice-fit-on-external-entity" :: governance [required deny:write]
+  pattern = "applying n=6 lattice as derivation rule to L'Oréal · Estée Lauder · Shiseido · dermatology research bodies · clinical trials · or any external cosmetic vendor"
+  why = "raw#10 C3"
+
+@F f_unsupported_efficacy := "unsupported-efficacy-claim" :: governance [required deny:write]
+  pattern = "claiming '<verb> works because n=6 lattice' without citing the underlying biology / chemistry / clinical study"
+  remedy = "cite real-limits source (FDA monograph · ISO standard · peer-reviewed clinical study)"
+
+@X x_lattice_policy := "echoes/LATTICE_POLICY.md" :: policy [d=2026-05-12 active]
+  url = "https://github.com/dancinlab/echoes/blob/main/LATTICE_POLICY.md"
+
+@X x_tape_spec := "tape v1.2 spec" :: spec [d=2026-05-14 active]
+  url = "https://github.com/dancinlab/tape/blob/main/spec/tape.md"
+
+@X x_hexa_medic := "dancinlab/hexa-medic" :: source-substrate [active]
+  scope = "6 verbs migrated from here to florea on 2026-05-12 — verbs that didn't fit medicine/pharmacology/oncology/virology substrate"
+
+@X x_hexa_bio := "dancinlab/hexa-bio" :: source-substrate [active]
+  scope = "1 verb (skincare via electronic-skin) migrated to florea"
+
+@X x_lumiere := "dancinlab/lumiere" :: brand-cohort [active]
+  scope = "cohort member · standalone-brand naming pattern (Lumière camera filter)"
+
+@H h1 := "agents-md-replaced" :: generator [active]
+  note = "AGENTS.md (0-byte placeholder) replaced by this AGENTS.tape (tape v1.2)"
+
+@H h2 := "claude-md-symlink" :: generator [active]
+  rule = "CLAUDE.md → AGENTS.tape symlink"
+  command = `ln -sf AGENTS.tape CLAUDE.md`
