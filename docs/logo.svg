@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" role="img" aria-label="florea logo">
+  <g fill="none" stroke="#bf8700" stroke-width="6" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="70" cy="40" rx="14" ry="20"/>
+    <ellipse cx="100" cy="70" rx="20" ry="14"/>
+    <ellipse cx="70" cy="100" rx="14" ry="20"/>
+    <ellipse cx="40" cy="70" rx="20" ry="14"/>
+    <ellipse cx="91" cy="49" rx="18" ry="14" transform="rotate(45 91 49)"/>
+    <ellipse cx="91" cy="91" rx="14" ry="18" transform="rotate(45 91 91)"/>
+    <circle cx="70" cy="70" r="10"/>
+  </g>
+  <text x="70" y="135" text-anchor="middle"
+        font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
+        font-size="10" font-weight="700" fill="#bf8700"
+        letter-spacing="1">florea</text>
+</svg>
