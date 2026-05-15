@@ -23,3 +23,8 @@ womens_intimate_cleanser = ["womens-intimate-cleanser"]
 [dependencies]
 hexa-lang = ">=1.0.0"
 python    = ">=3.10"
+# Optional sister-repo dependency for analytic work (n=6 anchor verification,
+# selftest gates, Python witnesses). Invoked via CLI shell-out from
+# `florea analyze <verb>`. SKIP (honest) if not reachable on host — see
+# AGENTS.tape @D g_use_hexa_bio_cli.
+hexa-bio  = { version = ">=1.0.0", optional = true }

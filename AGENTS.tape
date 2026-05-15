@@ -82,6 +82,13 @@
   authority = "[@x_tape_spec] §Domain-tape sibling §Architecture-vs-history split"
   @> AGENTS.md
 
+@D g_use_hexa_bio_cli := "florea-shells-out-to-hexa-bio-for-analysis" :: governance [required d=2026-05-15 active]
+  rule = "Floréa is the brand SSOT for the 7 verbs (.md + .tape assets). Analytic work (n=6 anchor verification · selftest gates · Python witnesses · cross-DSE audits) lives in dancinlab/hexa-bio and is invoked via CLI shell-out from `florea analyze <verb>` — NEVER reimplemented inside florea."
+  why = "florea ships as a brand wrapper without analysis infrastructure (no selftest/, _python_bridge/, _qiskit_bridge/, or _absorption_bridge/ directories). Duplicating bio-engine logic here would create drift against the 5-axis SSOT in hexa-bio. This mirrors the pattern hexa-bio applies to qmirror/hexa-meta/xeno/canon-infra (see hexa-bio AGENTS.tape g5_sister_repo_cli)."
+  how-to-apply = "CLI-direct gates over Python wrappers. SKIP if hexa-bio is not reachable on the host (honest, not failure). FAIL is reserved for 'hexa-bio reachable, returned non-zero'."
+  authority = "[@x_hexa_bio] · mirrors dancinlab/hexa-bio:AGENTS.tape g5_sister_repo_cli"
+  @> AGENTS.md
+
 
 @F f1 := "lattice-fit-on-external-entity" :: governance [required deny:write]
   pattern = "applying n=6 lattice as derivation rule to L'Oréal · Estée Lauder · Shiseido · dermatology research bodies · clinical trials · or any external cosmetic vendor"

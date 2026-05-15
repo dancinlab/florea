@@ -105,6 +105,48 @@ fn cmd_verb(verb: str, a: [str]) {
     _audit(verb, "", 0)
 }
 
+// ─── subcommand: analyze (shell-out to hexa-bio) ───
+//
+// Per AGENTS.tape @D g_use_hexa_bio_cli — analytic work delegates to
+// dancinlab/hexa-bio. SKIP if hexa-bio is not on PATH (honest, not failure).
+// Florea must NEVER reimplement bio analysis logic locally.
+
+fn _hexa_bio_present() -> bool {
+    let r = exec("command -v hexa-bio >/dev/null 2>&1 && echo yes || echo no").trim()
+    return r == "yes"
+}
+
+fn cmd_analyze(verb: str, rest: [str], a: [str]) {
+    let spec = verb_spec(verb)
+    if spec == "" {
+        eprintln("florea analyze: unknown verb '" + verb + "'")
+        eprintln("run 'florea list' for the 7-verb table")
+        _audit("analyze", verb, 2)
+        exit(2)
+    }
+    if _hexa_bio_present() == false {
+        println("florea analyze " + verb + " — hexa-bio CLI not on PATH")
+        println("  status: SKIP (honest — analysis substrate not reachable on this host)")
+        println("  see: AGENTS.tape @D g_use_hexa_bio_cli")
+        println("  install: hx install hexa-bio  (or clone dancinlab/hexa-bio + add to PATH)")
+        if json_mode(a) {
+            println("{\"florea\":\"" + VERSION + "\",\"verb\":\"" + verb + "\",\"analyze\":\"SKIP\",\"reason\":\"hexa-bio absent\"}")
+        }
+        _audit("analyze", verb, 0)
+        return
+    }
+    let mut rest_str = ""
+    for r in rest { rest_str = rest_str + " " + shq(r) }
+    let cmd = "hexa-bio" + rest_str
+    println("florea analyze " + verb + " → shelling out: " + cmd)
+    let out = exec(cmd + " 2>&1")
+    println(out.trim())
+    if json_mode(a) {
+        println("{\"florea\":\"" + VERSION + "\",\"verb\":\"" + verb + "\",\"analyze\":\"DELEGATED\",\"shell_out\":\"hexa-bio\"}")
+    }
+    _audit("analyze", verb, 0)
+}
+
 fn cmd_selftest(a: [str]) {
     let mut ok = 0
     let mut miss: [str] = []
@@ -147,6 +189,9 @@ fn cmd_help() {
     println("utility subcommands:")
     println("  list             verb table")
     println("  selftest         7-verb spec presence sweep")
+    println("  analyze <verb> [hexa-bio args...]")
+    println("                   shell-out to hexa-bio for n=6 / selftest / witness work")
+    println("                   (SKIP if hexa-bio not on PATH — per AGENTS.tape g_use_hexa_bio_cli)")
     println("")
     println("global flags:")
     println("  --version        show version")
@@ -185,6 +230,19 @@ fn main() {
     if sub == "help"      { cmd_help(); return }
     if sub == "list"      { cmd_list(a); return }
     if sub == "selftest"  { cmd_selftest(a); return }
+    if sub == "analyze"   {
+        if n < 4 {
+            eprintln("florea analyze: usage: florea analyze <verb> [hexa-bio subcmd...]")
+            eprintln("  shells out to hexa-bio for analytic work (n=6 anchors · selftest · witnesses)")
+            exit(2)
+        }
+        let v = a[3]
+        let mut rest: [str] = []
+        let mut i = 4
+        while i < n { rest = rest + [a[i]]; i = i + 1 }
+        cmd_analyze(v, rest, a)
+        return
+    }
 
     if verb_spec(sub) != "" { cmd_verb(sub, a); return }
 
