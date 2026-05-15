@@ -73,9 +73,31 @@ hx install florea
 florea list             # verb table
 florea selftest         # 7-verb spec presence sweep
 florea <verb>           # read a verb spec (cosmetic_surgery / hair_regeneration / mens_intimate_cleanser / perfumery / skincare / tattoo_removal / womens_intimate_cleanser)
+florea analyze <verb> [hexa-bio args...]
+                        # shell-out to hexa-bio for n=6 / selftest / witness work
 florea version          # print version
 florea help             # full help (subcommands + flags + env)
 ```
+
+## Analytic substrate — hexa-bio CLI shell-out
+
+Floréa ships as a brand SSOT (per-verb `.md` + `.tape` assets) and does
+**not** bundle analysis infrastructure of its own. Quantitative work —
+`n=6` anchor verification, selftest gates, Python witness emitters, and
+cross-DSE audits — lives in [`dancinlab/hexa-bio`](https://github.com/dancinlab/hexa-bio)
+and is reached via CLI shell-out:
+
+```sh
+florea analyze tattoo_removal selftest         # delegates to hexa-bio selftest
+florea analyze hair_regeneration status        # delegates to hexa-bio status
+```
+
+`florea analyze` SKIPs honestly when `hexa-bio` is not on `PATH` (not a
+failure — just no analysis substrate installed). FAIL is reserved for
+"hexa-bio reachable but returned non-zero." This mirrors the same pattern
+hexa-bio applies to its own sister repos (qmirror / hexa-meta / xeno) —
+see florea `AGENTS.tape` `@D g_use_hexa_bio_cli` for the governance rule
+and hexa-bio `AGENTS.md` "Sister-repo rules" for the cohort-wide convention.
 
 ## Repo layout
 
