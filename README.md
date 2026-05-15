@@ -103,27 +103,37 @@ and hexa-bio `AGENTS.md` "Sister-repo rules" for the cohort-wide convention.
 
 ```
 florea/
-├── AGENTS.tape                  # governance + identity (.tape v1.2)
-├── CLAUDE.md                    # symlink → AGENTS.tape
-├── CITATION.cff                 # citation metadata
-├── hexa.toml                    # package manifest
-├── LICENSE                      # MIT
-├── README.md                    # this file (atlas/README-FORMAT.md compliant)
-├── TAPE-AUDIT.md                # .tape v1.x adoption audit ledger
-├── cli/                         # florea CLI driver
-├── cosmetic-surgery/            # verb 1 · spec
-├── hair-regeneration/           # verb 2 · spec
-├── mens-intimate-cleanser/      # verb 3 · spec
-├── perfumery/                   # verb 4 · spec
-├── skincare/                    # verb 5 · spec (from hexa-bio)
-├── tattoo-removal/              # verb 6 · spec
-├── womens-intimate-cleanser/    # verb 7 · spec
-├── papers/                      # supporting literature
-├── tests/                       # selftest fixtures
-├── state/                       # runtime markers (gitignored)
+├── AGENTS.tape                            # governance + identity (.tape v1.2)
+├── CLAUDE.md                              # symlink → AGENTS.tape
+├── CITATION.cff                           # citation metadata
+├── hexa.toml                              # package manifest
+├── LICENSE                                # MIT
+├── README.md                              # this file (atlas/README-FORMAT.md compliant)
+├── TAPE-AUDIT.md                          # .tape v1.x adoption audit ledger
+├── COSMETIC-SURGERY.{tape,log.tape}       # verb 1 · domain SSOT (root convention)
+├── HAIR-REGENERATION.{tape,log.tape}      # verb 2 · domain SSOT
+├── MENS-INTIMATE-CLEANSER.{tape,log.tape} # verb 3 · domain SSOT
+├── PERFUMERY.{tape,log.tape}              # verb 4 · domain SSOT
+├── TATTOO-REMOVAL.{tape,log.tape}         # verb 5 · domain SSOT
+├── WOMENS-INTIMATE-CLEANSER.{tape,log.tape} # verb 6 · domain SSOT
+├── cli/                                   # florea CLI driver
+├── cosmetic-surgery/                      # verb 1 · spec (.md)
+├── hair-regeneration/                     # verb 2 · spec (.md)
+├── mens-intimate-cleanser/                # verb 3 · spec (.md)
+├── perfumery/                             # verb 4 · spec (.md)
+├── skincare/                              # verb 5 · spec (.md, from hexa-bio; no .tape)
+├── tattoo-removal/                        # verb 6 · spec (.md)
+├── womens-intimate-cleanser/              # verb 7 · spec (.md)
+├── papers/                                # supporting literature
+├── tests/                                 # selftest fixtures
+├── state/                                 # runtime markers (gitignored)
 └── docs/
-    └── logo.svg                 # repo logo (gold #bf8700)
+    └── logo.svg                           # repo logo (gold #bf8700)
 ```
+
+Domain `.tape` / `.log.tape` files live at repo root (matching the
+hexa-bio convention — all 123 domain tapes at root, no subdir nesting).
+Verb subdirectories now hold only `.md` specs.
 
 ## Origin
 

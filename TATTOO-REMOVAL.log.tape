@@ -41,16 +41,16 @@
   version = "1.2"
 
 # ══════════════════════════════════════════════════════════════
-# HAIR-REGENERATION.log.tape — hair-regeneration cycle events (chronological)
-# Sibling: HAIR-REGENERATION.tape (architecture-current)  ·  v1.2 split 2026-05-15
+# TATTOO-REMOVAL.log.tape — tattoo-removal cycle events (chronological)
+# Sibling: TATTOO-REMOVAL.tape (architecture-current)  ·  v1.2 split 2026-05-15
 # Repo-of-record: dancinlab/florea (migrated from dancinlab/hexa-bio 2026-05-15)
 # ══════════════════════════════════════════════════════════════
 
 # §Log — entries chronological, oldest first
 
-@A migrate_hexa_bio_to_florea := "HAIR-REGENERATION.tape ↔ .log.tape leftover migration" :: migration [ok d=2026-05-15]
-  source = "dancinlab/hexa-bio:HAIR-REGENERATION.tape + HAIR-REGENERATION.log.tape (deleted from hexa-bio)"
-  destination = "dancinlab/florea:hair-regeneration/HAIR-REGENERATION.tape + hair-regeneration/HAIR-REGENERATION.log.tape"
-  reason = "completing the verb move recorded in hexa-bio/DECOMPOSITION_PLAN.md line 48 (`hair-regeneration` MOVED to Floréa 🌸 2026-05-12). Verb directory was moved 2026-05-12; the .tape SSOT pair stayed in hexa-bio as leftover and was processed by mass-split commit 153b5a2 (2026-05-15) in-place. This entry records the relocation to the proper repo-of-record."
+@A migrate_hexa_bio_to_florea := "TATTOO-REMOVAL.tape ↔ .log.tape leftover migration" :: migration [ok d=2026-05-15]
+  source = "dancinlab/hexa-bio:TATTOO-REMOVAL.tape + TATTOO-REMOVAL.log.tape (deleted from hexa-bio)"
+  destination = "dancinlab/florea:TATTOO-REMOVAL.tape + TATTOO-REMOVAL.log.tape (root — moved from verb subdir 2026-05-15 same cycle to match hexa-bio convention)"
+  reason = "completing the verb move recorded in hexa-bio/DECOMPOSITION_PLAN.md line 63 (`tattoo-removal` MOVED to Floréa 🌸 2026-05-12). Verb directory was moved 2026-05-12 but the .tape SSOT pair stayed in hexa-bio as leftover. Mass-split commit 1cbbad2 (2026-05-15) split the leftover into .tape ↔ .log.tape locally; this entry records the relocation to the proper repo-of-record."
   identity-change = "@I id001.parent: dancinlab/hexa-bio → dancinlab/florea (prior-parent retained for provenance)"
-  analytic-substrate = "n=6 / selftest / witness work delegated to hexa-bio via `florea analyze hair_regeneration ...` per florea AGENTS.tape @D g_use_hexa_bio_cli"
+  cross-link-status = "hexa-bio/COSMETIC-SURGERY.tape row_tattoo_removal_2 keeps tattoo-removal as a Cross-DSE pointer — no edit needed (external reference is honest)"

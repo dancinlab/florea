@@ -16,15 +16,16 @@ optional dependency for analytic shell-out.
 
 ## C. Domain `.tape` files
 
-**6 verbs × 2 (.tape + .log.tape) = 12 files** under verb subdirectories,
-all `tape v1.2`:
+**6 verbs × 2 (.tape + .log.tape) = 12 files** at repo root (matching
+the hexa-bio convention — domain tapes live at root, not in verb
+subdirs), all `tape v1.2`:
 
-- `cosmetic-surgery/COSMETIC-SURGERY.{tape,log.tape}`
-- `hair-regeneration/HAIR-REGENERATION.{tape,log.tape}`
-- `mens-intimate-cleanser/MENS-INTIMATE-CLEANSER.{tape,log.tape}`
-- `perfumery/PERFUMERY.{tape,log.tape}`
-- `tattoo-removal/TATTOO-REMOVAL.{tape,log.tape}`
-- `womens-intimate-cleanser/WOMENS-INTIMATE-CLEANSER.{tape,log.tape}`
+- `COSMETIC-SURGERY.{tape,log.tape}`
+- `HAIR-REGENERATION.{tape,log.tape}`
+- `MENS-INTIMATE-CLEANSER.{tape,log.tape}`
+- `PERFUMERY.{tape,log.tape}`
+- `TATTOO-REMOVAL.{tape,log.tape}`
+- `WOMENS-INTIMATE-CLEANSER.{tape,log.tape}`
 
 All 6 pairs were migrated from `dancinlab/hexa-bio` on 2026-05-15
 (completing the verb move recorded in hexa-bio `DECOMPOSITION_PLAN.md`
@@ -33,6 +34,9 @@ relocated to repo-of-record). Each verb's `.tape` has `@I id001.parent =
 dancinlab/florea` with `prior-parent` retained for provenance; each
 `.log.tape` records the migration via an `@A migrate_hexa_bio_to_florea`
 entry. `skincare` is `.md`-only (no `.tape` leftover to migrate).
+
+Verb subdirectories (`cosmetic-surgery/`, `hair-regeneration/`, ...)
+now hold only the `.md` specs — domain SSOT (`.tape`) sits at root.
 
 ## D. Per-run / per-event history
 

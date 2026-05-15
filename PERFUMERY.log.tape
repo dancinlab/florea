@@ -17,7 +17,7 @@
 
 @A migrate_hexa_bio_to_florea := "PERFUMERY.tape ↔ .log.tape leftover migration" :: migration [ok d=2026-05-15]
   source = "dancinlab/hexa-bio:PERFUMERY.tape + PERFUMERY.log.tape (deleted from hexa-bio)"
-  destination = "dancinlab/florea:perfumery/PERFUMERY.tape + perfumery/PERFUMERY.log.tape"
+  destination = "dancinlab/florea:PERFUMERY.tape + PERFUMERY.log.tape (root — moved from verb subdir 2026-05-15 same cycle to match hexa-bio convention)"
   reason = "completing the verb move recorded in hexa-bio/DECOMPOSITION_PLAN.md line 59 (`perfumery` MOVED to Floréa 🌸 2026-05-12). Verb directory was moved 2026-05-12; the .tape SSOT pair stayed in hexa-bio as leftover and was processed by mass-split commit 153b5a2 (2026-05-15) in-place. This entry records the relocation to the proper repo-of-record."
   identity-change = "@I id001.parent: dancinlab/hexa-bio → dancinlab/florea (prior-parent retained for provenance)"
   analytic-substrate = "n=6 / selftest / witness work delegated to hexa-bio via `florea analyze perfumery ...` per florea AGENTS.tape @D g_use_hexa_bio_cli"
