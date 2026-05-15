@@ -38,342 +38,150 @@
 # Full spec: ~/core/tape/spec/tape.md (or github.com/dancinlab/tape)
 # ══════════════════════════════════════════════════════════════════════
 
-
 # ══════════════════════════════════════════════════════════════
 # HAIR-REGENERATION.tape — architecture-current (editable per v1.2)
 # Event history → HAIR-REGENERATION.log.tape sibling
+# SCOPE NARROWED 2026-05-15: regeneration TECHNOLOGY (de-novo follicle
+# neogenesis). AGA pharmacology split out → ANDROGENETIC-ALOPECIA.tape.
 # ══════════════════════════════════════════════════════════════
 
 @V := "tape" :: spec [active]
   version = "1.2"
 
 @I id001 := "hair-regeneration" :: identity-claim [d=2026-05-15 active]
-  kind = "HEXA-Bio family · hair regeneration substrate"
-  brief = "per-domain substrate · n=6 mapping · biological/biochemical context"
+  kind = "Floréa 🌸 verb · hair-regeneration TECHNOLOGY — de-novo follicular neogenesis & follicle bioengineering"
+  brief = "creating/restoring follicles where viable ones are gone (NOT suppressing DHT) · real cell-bio + real-limits · n=6 not used as derivation"
   parent = "dancinlab/florea"
-  prior-parent = "dancinlab/hexa-bio (migrated 2026-05-15 per DECOMPOSITION_PLAN.md)"
+  scope-narrowed = "2026-05-15 — was a lattice-tautology stub conflating AGA + regeneration; pharmacological AGA management moved to ANDROGENETIC-ALOPECIA.tape (see HAIR-REGENERATION.log.tape audit + supersede events)"
   sibling-log = "HAIR-REGENERATION.log.tape"
+  scope = "in-silico knowledge SSOT · preclinical/experimental survey · NOT a marketed therapy / not medical advice"
+
+@N scope_disclaimer := "experimental-scope honesty" :: note [required]
+  text = "Every approach in this tape is preclinical or early clinical-stage as of knowledge cutoff. NO technology here delivers scalable de-novo human hair-follicle neogenesis as an approved product. This is a research-landscape SSOT, not a treatment offering."
+
+@D scope_vs_aga := "regeneration ≠ AGA pharmacology" :: domain [ok]
+  this-tape = "Create/restore hair follicles de novo (neogenesis, follicle bioengineering, cell therapy)."
+  other-tape = "ANDROGENETIC-ALOPECIA.tape = pharmacologically slow/halt/partially reverse DHT-driven miniaturization of EXISTING follicles."
+  why-split = "Different problem, different ceiling. AGA therapy CANNOT add follicles ([@x_aga_sibling] @D lim_donor_finitude). Regeneration targets exactly that gap — and is itself unsolved at human scale."
+  complementarity = "A fully solved AGA tape still leaves Norwood-VII (no viable follicles) untreatable without regeneration. That is this tape's reason to exist."
+
+# ── §1 Biology of follicle morphogenesis (what must be recreated) ─────
+
+@D bio_em_crosstalk := "epithelial–mesenchymal cross-talk" :: mechanism [ok]
+  core = "Hair-follicle formation requires reciprocal signaling between epithelial (placode) and mesenchymal (dermal condensate → dermal papilla, DP) compartments — Wnt/β-catenin, Shh, BMP, FGF, Notch."
+  dp-role = "The dermal papilla is the inductive 'organizer' — its signaling determines follicle formation, size, and cycling."
+  implication = "Regeneration is mini-ORGAN reconstruction (epithelium + mesenchyme + cycling + pigment + sebaceous gland + innervation), not delivery of one cell type."
+
+@D bio_stem_cells := "hair-follicle stem cell pools" :: mechanism [ok]
+  bulge = "Bulge stem cells (label-retaining; mouse K15+/CD34+, LGR5) drive cyclic regeneration of the lower follicle."
+  dp-progenitors = "DP/dermal sheath supply the inductive mesenchyme; sheath cells can replenish DP."
+  discovery = "Bulge label-retaining cells — Cotsarelis et al. 1990."
+  |> "[@x_cotsarelis_1990]"
 
-@D row_x_0 :: hair-regeneration [ok]
-  x = "모발 재생 %"
-  x = "20"
-  hexa = "**90**"
-  x = "체감: σ·(σ-φ)/2 연결"
+# ── §2 Regeneration approaches (real, with landmark citations) ────────
+
+@D appr_wihn := "wound-induced hair neogenesis (WIHN)" :: approach [ok]
+  finding = "Adult mouse skin regenerates NEW follicles de novo in the center of large full-thickness wounds, via Wnt/β-catenin reactivation of an embryonic-like program."
+  human-gap = "Robust in mouse; marginal-to-absent in adult human at clinical scale. Wound size threshold + species difference unresolved."
+  status = "Proof-of-principle that adult skin retains latent neogenic competence — not a human therapy."
+  |> "[@x_ito_2007]"
 
+@D appr_dp_culture := "dermal-papilla cell therapy" :: approach [ok]
+  problem = "Cultured human DP cells rapidly LOSE hair-inductive capacity on 2D passage (inductive gene-expression signature drifts)."
+  partial-fix = "3D spheroid culture restores a substantial fraction of inductivity → de-novo human hair growth in xenograft assay (Higgins et al.)."
+  residual = "Restoration is partial, not complete; scale-up + reproducible potency are unsolved. See [@lim_inductivity]."
+  industry = "Epibiotech (KR, EPI-001), HairClone (UK, banking + DP multiplication) operate in this lane (preclinical/early-clinical)."
+  |> "[@x_higgins_2013]"
 
-@D row_x_1 :: hair-regeneration [ok]
-  x = "치료 기간 개월"
-  x = "12"
-  hexa = "**6**"
-  x = "체감: n=6 연결"
+@D appr_follicle_germ := "bioengineered follicle germ" :: approach [ok]
+  finding = "Reconstituted epithelial+mesenchymal 'follicle germ' transplanted into mouse skin formed FULLY functional follicles — correct structure, hair-shaft cycling, piloerection, innervation."
+  human-gap = "Demonstrated with mouse/embryonic cells; translating to scalable adult-human autologous sources is the open problem."
+  industry = "RIKEN / OrganTech (Tsuji program) pursued clinical translation of follicle-germ transplantation."
+  |> "[@x_toyoshima_2012]"
 
+@D appr_ipsc_organoid := "iPSC-derived skin/follicle organoids" :: approach [ok]
+  finding = "Human pluripotent stem cells self-organized into skin organoids bearing pigmented hair follicles with sebaceous glands and nerves."
+  human-gap = "Organoids form in vitro / as cysts; controlled, oriented, dense scalp integration in vivo is unsolved. Tumorigenicity/safety of iPSC products is a regulatory gate."
+  industry = "Stemson Therapeutics (iPSC follicle + scaffold for hair direction), dNovo (direct reprogramming) — preclinical."
+  |> "[@x_lee_2020]"
 
-@D row_cm_2 :: hair-regeneration [ok]
-  x = "재성장 밀도/cm²"
-  x = "100"
-  hexa = "**600**"
-  x = "체감: σ·sopfr·10 연결"
+@D appr_bioprint := "microfabricated / 3D-printed follicle units" :: approach [ok]
+  finding = "Biomimetic microwell molds drive DP-cell aggregation into inductive units → human hair-follicle formation in a humanized graft model (developmental-engineering approach)."
+  status = "Manufacturing-oriented route to standardize inductive units; still preclinical; density/orientation/cost open."
+  |> "[@x_abaci_2018]"
 
+# ── §3 Real-limits anchors (LATTICE_POLICY g1 — real-limits-first) ────
 
-@D row_x_3 :: hair-regeneration [ok]
-  x = "재발률 %"
-  x = "30"
-  hexa = "**4**"
-  x = "체감: τ=4 연결"
+@D lim_no_scalable_neogenesis := "no approved scalable human neogenesis" :: real-limit [ok required]
+  wall = "HARD WALL (as of knowledge cutoff)"
+  statement = "No technology delivers scalable, oriented, cycling, pigmented de-novo human scalp follicles as an approved product. All approaches are preclinical or early-clinical."
+  consequence = "Regeneration is not yet a clinical alternative to transplantation; it is the research frontier that, if solved, removes the donor-finitude conservation limit of [@x_aga_sibling]."
 
+@D lim_inductivity := "DP inductivity loss on expansion" :: real-limit [ok required]
+  wall = "SOFT WALL"
+  statement = "Human DP cells lose hair-inductive potency on 2D expansion; 3D/microenvironment partially restores it but not fully or reproducibly at manufacturing scale."
+  consequence = "Cell-therapy potency, not cell quantity, is the binding constraint."
 
-@D row_x_4 :: hair-regeneration [ok]
-  x = "생산성"
-  x = "모발 재생 90% 달성"
-  n_6 = "σ·sopfr=60"
+@D lim_miniorgan := "mini-organ integration" :: real-limit [ok required]
+  wall = "HARD WALL (functional)"
+  statement = "A cosmetically useful follicle needs correct direction, density, pigmentation, cyclic regeneration, sebaceous gland, and innervation — full mini-organ integration, not mere follicle presence."
+  consequence = "'Follicles formed' in a dish ≠ a usable hairline. Functional/aesthetic integration is the hardest unsolved layer."
 
+@D lim_safety_scale := "safety + manufacturing scale" :: real-limit [ok required]
+  wall = "REGULATORY / ECONOMIC"
+  statement = "iPSC-derived products carry tumorigenicity risk requiring rigorous clearance; per-unit manufacturing must reach ≈10⁴–10⁵ follicles/scalp at viable cost."
+  consequence = "Even a biologically working method faces a safety + unit-economics gate before it is a product."
 
-@D row_x_5 :: hair-regeneration [ok]
-  x = "신뢰성"
-  x = "실패율 1% 이하"
-  n_6 = "μ=1"
+# ── §4 n=6 lattice stance (HONEST — no natural invariant) ─────────────
 
+@F f_lattice_fit := "lattice-fit-on-regeneration-biology" :: governance [required deny:write]
+  pattern = "Deriving regeneration efficacy / follicle counts / timelines FROM the n=6 lattice."
+  why = "The pre-narrowing tape did exactly this (σ·(σ-φ)/2 → '90% regrowth'); florea AGENTS.tape @F f_unsupported_efficacy + @D g_honesty_obligation_skincare forbid it."
+  remedy = "Cite the real cell-biology literature in this tape's @X entries. Lattice is not a derivation here."
 
-@D row_x_6 :: hair-regeneration [ok]
-  x = "표준화"
-  x = "6대 핵심 지표 확립"
-  n_6 = "n=6"
+@N n6_honest_stance := "regeneration tech has no natural n=6 invariant" :: note [required]
+  text = "Stated plainly: hair-regeneration technology exposes NO natural n=6 invariant. Signaling-pathway count, approach count, and cell-source count are not lattice-constrained. Per LATTICE_POLICY g1/g2 + lattice-as-tool, the lattice is declined as a derivation tool here. This is the corrective for the audited pre-split violation (see HAIR-REGENERATION.log.tape)."
 
+# ── §5 Verifiable predictions (real, falsifiable — NOT lattice) ───────
 
-@D row_x_7 :: hair-regeneration [ok]
-  x = "감사/추적"
-  x = "σ=12 전수 기록"
-  n_6 = "σ(6)=12"
+@D tp_1 := "TP-1 species gap in WIHN" :: prediction [ok]
+  claim = "Unassisted WIHN yields far fewer neogenic follicles per unit wound area in adult human than in adult mouse."
+  falsifier = "If a controlled human study shows mouse-equivalent spontaneous WIHN density, [@appr_wihn] human-gap is wrong."
+  source = "[@x_ito_2007]"
 
-# ── §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII) ─────────────────────────────────────────
+@D tp_2 := "TP-2 2D inductivity decay" :: prediction [ok]
+  claim = "Human DP hair-inductive capacity declines with successive 2D passages; 3D culture recovers part (not all) of it."
+  falsifier = "If 2D-passaged human DP cells retain full inductivity without 3D rescue, [@lim_inductivity] is wrong."
+  source = "[@x_higgins_2013]"
 
+@D tp_3 := "TP-3 integration ≫ formation" :: prediction [ok]
+  claim = "Across approaches, the limiting failure is functional/aesthetic integration (direction, density, cycling), not mere follicle formation."
+  falsifier = "If any approach reports clinically dense, correctly oriented, cycling human scalp coverage at scale, [@lim_miniorgan] is wrong."
 
+# ── §6 Cross-links ────────────────────────────────────────────────────
 
-@D b_6_12_12_0 :: hair-regeneration [ok]
-  text = "σ(6)=12 (약수의 합) → 12 종 소스/모니터 전수"
+@X x_aga_sibling := "ANDROGENETIC-ALOPECIA.tape" :: sibling-tape [active]
+  scope = "split sibling 2026-05-15 — DHT-suppression pharmacology for EXISTING follicles. Its @D lim_donor_finitude (HARD WALL: no scalable de-novo neogenesis) is precisely the gap THIS tape addresses."
 
+@X x_florea_agents := "florea AGENTS.tape" :: governance [active]
+  scope = "@D g_honesty_obligation_skincare + @F f_unsupported_efficacy + @D g_use_hexa_bio_cli (analytic verification shells out to hexa-bio)"
 
-@D b_6_4_4_1 :: hair-regeneration [ok]
-  text = "τ(6)=4 (약수의 개수) → 4 주기 표준 클록"
+# ── §7 External citations (real, landmark literature) ─────────────────
 
+@X x_cotsarelis_1990 := "Cotsarelis G et al 1990" :: literature [active]
+  ref = "Cotsarelis G, Sun TT, Lavker RM. Label-retaining cells reside in the bulge area of pilosebaceous unit. Cell 1990;61:1329–1337."
 
-@D b_6_2_2_2 :: hair-regeneration [ok]
-  text = "φ(6)=2 (오일러 토션) → 2대칭 중복 설계"
+@X x_ito_2007 := "Ito M et al 2007" :: literature [active]
+  ref = "Ito M et al. Wnt-dependent de novo hair follicle regeneration in adult mouse skin after wounding. Nature 2007;447:316–320."
 
-# ── §3 REQUIRES (필요한 요소) — 선행 도메인 ─────────────────────────────────────────
+@X x_toyoshima_2012 := "Toyoshima KE et al 2012" :: literature [active]
+  ref = "Toyoshima KE et al. Fully functional hair follicle regeneration through the rearrangement of stem cells and their niches. Nat Commun 2012;3:784."
 
+@X x_higgins_2013 := "Higgins CA et al 2013" :: literature [active]
+  ref = "Higgins CA et al. Microenvironmental reprogramming by three-dimensional culture enables dermal papilla cells to induce de novo human hair-follicle growth. Proc Natl Acad Sci USA 2013;110:19679–19688."
 
+@X x_abaci_2018 := "Abaci HE et al 2018" :: literature [active]
+  ref = "Abaci HE et al. Tissue engineering of human hair follicles using a biomimetic developmental approach. Nat Commun 2018;9:5301."
 
-@D row_pharmacology_0 :: hair-regeneration [ok]
-  x = "pharmacology"
-  x = "7"
-  x = "10"
-  x = "+3"
-  x = "약리학"
-
-
-@D row_cosmetic_surgery_1 :: hair-regeneration [ok]
-  x = "cosmetic-surgery"
-  x = "7"
-  x = "10"
-  x = "+3"
-  x = "성형외과"
-
-
-@D row_bio_pharma_2 :: hair-regeneration [ok]
-  x = "bio-pharma"
-  x = "7"
-  x = "10"
-  x = "+3"
-  x = "바이오의약"
-
-# ── §4 STRUCT (시스템 구조) — System Architecture (ASCII) ─────────────────────────────────────────
-
-
-
-@D row_core_0 :: hair-regeneration [ok]
-  x = "Core 자유도"
-  x = "6"
-  n_6 = "n = 6"
-  x = "최소 완전수"
-  x = "EXACT"
-
-
-@D row_input_1 :: hair-regeneration [ok]
-  x = "Input 소스 수"
-  x = "12"
-  n_6 = "σ = 12"
-  x = "OEIS A000203"
-  x = "EXACT"
-
-
-@D row_process_2 :: hair-regeneration [ok]
-  x = "Process 주기"
-  x = "4"
-  n_6 = "τ = 4"
-  x = "OEIS A000005"
-  x = "EXACT"
-
-
-@D row_symmetry_3 :: hair-regeneration [ok]
-  x = "Symmetry 축"
-  x = "2"
-  n_6 = "φ = 2"
-  x = "OEIS A000010"
-  x = "EXACT"
-
-
-@D row_output_4 :: hair-regeneration [ok]
-  x = "Output 모니터"
-  x = "24"
-  n_6 = "J₂ = 2σ"
-  x = "전수 감사"
-  x = "EXACT"
-
-
-@D row_fallback_5 :: hair-regeneration [ok]
-  x = "Fallback 채널"
-  x = "5"
-  n_6 = "sopfr = 5"
-  x = "독립 경로"
-  x = "EXACT"
-
-
-@D row_x_8 :: hair-regeneration [ok]
-  x = "실패율 %"
-  x = "1"
-  n_6 = "μ = 1"
-  x = "목표 TVAC"
-  x = "EXACT"
-
-
-@D row_exact_9 :: hair-regeneration [ok]
-  x = "EXACT 비율 %"
-  x = "93"
-  n_6 = "(sigma·phi/n·tau)·93"
-  x = "자기정리"
-  x = "EXACT"
-
-# ── §5 FLOW (데이터/에너지 플로우) — Flow (ASCII) ─────────────────────────────────────────
-
-
-
-@D row_1_0 :: hair-regeneration [ok]
-  rank = "1"
-  core = "n=6"
-  input = "σ=12"
-  process = "τ=4"
-  output = "J2=24"
-  monitor = "σ=12"
-  n6 = "93%"
-  x = "**최적**"
-
-
-@D row_2_1 :: hair-regeneration [ok]
-  rank = "2"
-  core = "n=6"
-  input = "σ-φ=10"
-  process = "τ=4"
-  output = "J2=24"
-  monitor = "σ=12"
-  n6 = "90%"
-  x = "대안"
-
-
-@D row_3_2 :: hair-regeneration [ok]
-  rank = "3"
-  core = "n=6"
-  input = "sopfr=5"
-  process = "τ=4"
-  output = "φ=2"
-  monitor = "σ=12"
-  n6 = "85%"
-  x = "간소"
-
-# ── §7 VERIFY (Python 검증) ─────────────────────────────────────────
-
-
-
-@D row_tp_1_0 :: hair-regeneration [ok]
-  x = "TP-1"
-  x = "모발 재생 최적값"
-  x = "σ·sopfr/10"
-  x = "90 %"
-  tier = "1"
-
-
-@D row_tp_2_1 :: hair-regeneration [ok]
-  x = "TP-2"
-  x = "τ=4 주기 동기"
-  x = "τ(6)=4"
-  x = "4 ± 0"
-  tier = "1"
-
-
-@D row_tp_3_2 :: hair-regeneration [ok]
-  x = "TP-3"
-  x = "φ=2 대칭 중복"
-  x = "φ(6)=2"
-  x = "2 ± 0"
-  tier = "1"
-
-
-@D row_tp_4_3 :: hair-regeneration [ok]
-  x = "TP-4"
-  x = "σ=12 모니터 수"
-  x = "σ(6)=12"
-  x = "12 ± 0"
-  tier = "1"
-
-
-@D row_tp_5_4 :: hair-regeneration [ok]
-  x = "TP-5"
-  x = "sopfr=5 채널"
-  x = "sopfr(6)=5"
-  x = "5 ± 0"
-  tier = "1"
-
-
-@D row_tp_6_5 :: hair-regeneration [ok]
-  x = "TP-6"
-  x = "J2=24 지표"
-  x = "2·σ=24"
-  x = "24 ± 0"
-  tier = "1"
-
-
-@D row_tp_7_6 :: hair-regeneration [ok]
-  x = "TP-7"
-  x = "n/φ=3 중복도"
-  x = "6/2=3"
-  x = "3 ± 0"
-  tier = "1"
-
-
-@D row_tp_8_7 :: hair-regeneration [ok]
-  x = "TP-8"
-  x = "σ·τ=48 합성"
-  x = "12·4=48"
-  x = "48 ± 0"
-  tier = "1"
-
-
-@D row_tp_9_8 :: hair-regeneration [ok]
-  x = "TP-9"
-  x = "σ·φ=n·τ 핵심"
-  x = "12·2=6·4=24"
-  x = "24 = 24"
-  tier = "1"
-
-
-@D row_tp_10_9 :: hair-regeneration [ok]
-  x = "TP-10"
-  x = "EXACT ≥ 90%"
-  x = "36 파라미터"
-  x = "≥ 0.93"
-  tier = "2"
-
-
-@D b_n_6_e_planck_h_c_n_6_10 :: hair-regeneration [ok]
-  text = "반례 (n=6 무관): 기본전하 e, Planck h, π, 광속 c — 이들은 n=6 유도 불가, 솔직히 인정"
-
-
-@D b_falsifier_85_exact_80_sensitivit_11 :: hair-regeneration [ok]
-  text = "Falsifier: 모발 재생 측정치 < 85% 이면 공식 폐기 / EXACT 비율 < 80% 이면 설계 철회 / sensitivity 흔들 때 최적 깨지면 볼록성 가설 기각"
-
-
-@D b_13_13_pass_n_6_12 :: hair-regeneration [ok]
-  text = "예상: **13/13 PASS (n=6 정직성 검증)**"
-
-
-@D b_n_6_n_n_6_13 :: hair-regeneration [ok]
-  text = "근거: n=6 이 최소 완전수이고 `σ·φ = n·τ` 이 n=6 에서 유일 성립"
-
-# ── §6 EVOLVE (Mk.I~V 진화) ─────────────────────────────────────────
-
-
-# ── §8 IDEAS ─────────────────────────────────────────
-
-
-# ── §9 METRICS ─────────────────────────────────────────
-
-
-# ── §10 RISKS ─────────────────────────────────────────
-
-
-# ── §11 DEPENDENCIES ─────────────────────────────────────────
-
-
-# ── §12 TIMELINE ─────────────────────────────────────────
-
-
-# ── §13 TOOLS ─────────────────────────────────────────
-
-
-# ── §14 TEAM ─────────────────────────────────────────
-
-
-# ── §15 REFERENCES ─────────────────────────────────────────
-
-
-
+@X x_lee_2020 := "Lee J et al 2020" :: literature [active]
+  ref = "Lee J et al. Hair-bearing human skin generated entirely from pluripotent stem cells. Nature 2020;582:399–404."

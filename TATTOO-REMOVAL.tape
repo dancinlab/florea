@@ -47,6 +47,25 @@
   prior-parent = "dancinlab/hexa-bio (migrated 2026-05-15 per DECOMPOSITION_PLAN.md)"
   sibling-log = "TATTOO-REMOVAL.log.tape"
 
+# ── §0 Honesty framing (Phase-2 pass 2026-05-15) ──────────────────────
+# These entries are AUTHORITATIVE over the migrated body below. The body
+# (289 @D rows) is a .md→.tape migration artifact; where its phrasing
+# conflicts with §0, §0 wins. No body content was deleted (provenance).
+
+@N honesty_framing := "in-silico + observation-not-derivation" :: note [required]
+  clinical-scope = "alien_index 10 / closure_grade 9 / '95%+ 완전제거율' are IN-SILICO design aspirations and modeling grades — NOT clinical results, regulatory status, or efficacy claims. No human trial backs the 95% figure. Real clinical picosecond+R20+PFD removal of black ink is ~75% complete clearance with multi-session variance; this tape models a design target, not an outcome."
+  n6-anchors = "The '36/36 EXACT' n=6 anchors are OBSERVATIONS where domain facts numerically coincide with lattice values (Fitzpatrick=6 skin types · R20=4 passes · IARC=5 metals). They are NOT derivations: the biology is set by Fitzpatrick 1988 / Ross 2012 / IARC, and would hold identically if the lattice did not exist."
+  flagged-phrasing = "Body lines deriving an efficacy ratio from the lattice (e.g. '상용 75% 대비 1.27배 = sigma/sigma-φ 비율') are exactly the anti-pattern @F f_lattice_fit forbids — retained only as migration provenance, superseded by this note."
+  grounded-verdict = "Phase-0 audit verdict: GROUNDED — efficacy claims cite real biology (Baranska 2018 J Exp Med · Ross 2012 · IARC). This tape is the compliant exemplar vs the HAIR-REGENERATION pre-split violation."
+
+@F f_lattice_fit := "lattice-fit-on-tattoo-biology" :: governance [required deny:write]
+  pattern = "Deriving removal efficacy / session counts / clearance ratios FROM the n=6 lattice (e.g. clearance-ratio = σ/(σ-φ))."
+  why = "florea AGENTS.tape @F f_unsupported_efficacy + @D g_honesty_obligation_skincare: efficacy must cite the actual photothermal/immunological biology, not the lattice."
+  remedy = "Cite real sources (Baranska 2018 · Ross 2012 · IARC · Fitzpatrick 1988). Lattice coincidences are observations only."
+
+@X x_florea_agents := "florea AGENTS.tape" :: governance [active]
+  scope = "@D g_honesty_obligation_skincare + @F f_unsupported_efficacy + @D g_use_hexa_bio_cli (analytic verification shells out to hexa-bio)"
+
 # ══════════════════════════════════════════════════════════════
 # 궁극의 타투 제거 (Ultimate Tattoo Removal) -- Consolidated Goal
 # ══════════════════════════════════════════════════════════════
@@ -1498,4 +1517,26 @@
 
 
 # ── §7 VERIFY (Python 검증) ─────────────────────────────────────────
+
+
+# ── §8 External citations (real literature — promoted from prose) ────
+# These sources are already named in the migrated body as free prose;
+# §8 promotes them to structured @X :: literature entries so the tape is
+# grounded in the lattice-honesty contract sense (hexa-bio tape-lint).
+# This is provenance promotion, NOT new claims.
+
+@X x_baranska_2018 := "Baranska A et al 2018" :: literature [active]
+  ref = "Baranska A et al. Unappreciated role of LANGERHANS cells / dermal macrophages in tattoo pigment retention and the macrophage capture–release cycle. J Exp Med 2018;215:1115–1133. (golden-window / macrophage recapture mechanism — body §'문신 영구성의 진짜 생물학')"
+
+@X x_ross_2012 := "Ross EV et al 2012 (R20)" :: literature [active]
+  ref = "R20 multi-pass protocol — Ross EV et al., Lasers Surg Med 2012 (4-pass same-session Q-switched/picosecond tattoo clearance). Basis of the body's 'R20 4-pass = τ' OBSERVATION."
+
+@X x_fitzpatrick_1988 := "Fitzpatrick TB 1988" :: literature [active]
+  ref = "Fitzpatrick TB. The validity and practicality of sun-reactive skin types I through VI. Arch Dermatol 1988;124:869–871. (6 skin types — body's Fitzpatrick=6 OBSERVATION, international standard since 1988)"
+
+@X x_iarc_metals := "IARC pigment-metal classification" :: literature [active]
+  ref = "IARC Monographs — classification of tattoo-ink heavy metals (Cd / Cr / Pb / Cu / Ni; Group 1/2A/2B). Basis of the body's 'sopfr=5 metals' OBSERVATION."
+
+@N citations_are_observation := "§8 grounds §0, does not derive" :: note [required]
+  text = "§8 records the REAL sources the body already referenced in prose. Per §0 @N honesty_framing + @F f_lattice_fit, the biology is set by these sources (Fitzpatrick 1988 / Ross 2012 / Baranska 2018 / IARC) and would hold identically with no lattice. n=6 numeric coincidences (6 skin types, 4 passes, 5 metals) are OBSERVATIONS, never derivations."
 

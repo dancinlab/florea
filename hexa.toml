@@ -9,7 +9,7 @@ family      = "hexa"   # HEXA n=6 invariant-lattice family member (no hexa- pref
 substrate   = "cosmetic·aesthetic·skincare·perfumery"
 description = "🌸 Floréa — n=6 cosmetic/aesthetic substrate, decomposed from hexa-medic 2026-05-12"
 
-# ── Verb manifest (7 verbs) ──────────────
+# ── Verb manifest (7 .md verbs + 1 tape-only domain) ──────────────
 verb_parent = "."
 [verbs]
 cosmetic_surgery        = ["cosmetic-surgery"]
@@ -19,6 +19,10 @@ perfumery               = ["perfumery"]
 skincare                = ["skincare"]
 tattoo_removal          = ["tattoo-removal"]
 womens_intimate_cleanser = ["womens-intimate-cleanser"]
+# Tape-only domain: split out of hair_regeneration 2026-05-15 (male-pattern
+# AGA). No .md subdir — root ANDROGENETIC-ALOPECIA.tape is the SSOT.
+# Analyzable via `florea analyze androgenetic_alopecia`.
+androgenetic_alopecia   = ["ANDROGENETIC-ALOPECIA.tape"]
 
 [dependencies]
 hexa-lang = ">=1.0.0"

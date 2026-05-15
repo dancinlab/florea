@@ -54,3 +54,15 @@
   reason = "completing the verb move recorded in hexa-bio/DECOMPOSITION_PLAN.md line 63 (`tattoo-removal` MOVED to Floréa 🌸 2026-05-12). Verb directory was moved 2026-05-12 but the .tape SSOT pair stayed in hexa-bio as leftover. Mass-split commit 1cbbad2 (2026-05-15) split the leftover into .tape ↔ .log.tape locally; this entry records the relocation to the proper repo-of-record."
   identity-change = "@I id001.parent: dancinlab/hexa-bio → dancinlab/florea (prior-parent retained for provenance)"
   cross-link-status = "hexa-bio/COSMETIC-SURGERY.tape row_tattoo_removal_2 keeps tattoo-removal as a Cross-DSE pointer — no edit needed (external reference is honest)"
+
+@A audit_governance_honesty := "Phase-0 governance/honesty audit" :: audit [ok d=2026-05-15]
+  scope = "florea AGENTS.tape @D g_honesty_obligation_skincare + @F f_unsupported_efficacy"
+  verdict = "GROUNDED — efficacy claims cite real biology/clinical sources (Baranska 2018 J Exp Med · Ross 2012 Lasers Surg Med · IARC 2023 · Fitzpatrick 1988). n=6 anchors largely track real domain facts (Fitzpatrick 6 skin types · R20 4-pass · IARC 5 metals)."
+  residual = "Some n=6 EXACT-anchor framing reads as derivation rather than observation; 'alien_index 10' / '95%+ 완전제거율' are design/in-silico aspirations not clinical results. Phase-2 adds an explicit observation-not-derivation note + @F mirroring florea f_unsupported_efficacy. No content is fabricated; no rewrite needed — framing-only."
+  finding-vs-hair = "Contrast: HAIR-REGENERATION.tape (sibling) is a pure lattice-tautology stub with zero biology — see its .log.tape audit entry. Tattoo tape is the compliant exemplar."
+
+@A phase2_honesty_framing := "Phase-2 honesty-framing pass applied" :: rewrite [ok d=2026-05-15]
+  change = "Added §0 framing block after @I id001 (framing-only — ZERO body @D rows deleted; 289-row migration artifact retained for provenance)."
+  entries-added = "@N honesty_framing (in-silico scope · observation-not-derivation · flagged the σ/(σ-φ) efficacy-ratio phrasing) + @F f_lattice_fit (mirrors florea f_unsupported_efficacy, parallel to the two hair tapes) + @X x_florea_agents cross-link."
+  authority = "§0 is declared AUTHORITATIVE over the migrated body; where body phrasing conflicts, §0 wins."
+  rationale = "Phase-0 verdict was GROUNDED (real citations) with framing residual only — so framing fix, not rewrite. Brings the 3 session tapes (TATTOO / ANDROGENETIC-ALOPECIA / HAIR-REGENERATION) to a consistent @F f_lattice_fit + @N honest-stance structure."

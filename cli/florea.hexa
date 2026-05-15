@@ -29,6 +29,20 @@ fn verb_spec(verb: str) -> str {
     return ""
 }
 
+// Root-level domain `.tape` SSOT path (hexa-bio convention: tapes at root).
+// Used by `florea analyze` to point hexa-bio's tape-lint at the right file.
+// androgenetic_alopecia is tape-only (split 2026-05-15; no .md subdir).
+fn tape_path(verb: str) -> str {
+    if verb == "tattoo_removal"           { return FL + "/TATTOO-REMOVAL.tape" }
+    if verb == "hair_regeneration"        { return FL + "/HAIR-REGENERATION.tape" }
+    if verb == "androgenetic_alopecia"    { return FL + "/ANDROGENETIC-ALOPECIA.tape" }
+    if verb == "cosmetic_surgery"         { return FL + "/COSMETIC-SURGERY.tape" }
+    if verb == "perfumery"                { return FL + "/PERFUMERY.tape" }
+    if verb == "mens_intimate_cleanser"   { return FL + "/MENS-INTIMATE-CLEANSER.tape" }
+    if verb == "womens_intimate_cleanser" { return FL + "/WOMENS-INTIMATE-CLEANSER.tape" }
+    return ""
+}
+
 let VERBS = ["cosmetic_surgery", "hair_regeneration", "mens_intimate_cleanser", "perfumery", "skincare", "tattoo_removal", "womens_intimate_cleanser"]
 
 fn shq(s: str) -> str {
@@ -117,10 +131,10 @@ fn _hexa_bio_present() -> bool {
 }
 
 fn cmd_analyze(verb: str, rest: [str], a: [str]) {
-    let spec = verb_spec(verb)
-    if spec == "" {
+    let tp = tape_path(verb)
+    if tp == "" && verb_spec(verb) == "" {
         eprintln("florea analyze: unknown verb '" + verb + "'")
-        eprintln("run 'florea list' for the 7-verb table")
+        eprintln("run 'florea list' (also: androgenetic_alopecia — tape-only)")
         _audit("analyze", verb, 2)
         exit(2)
     }
@@ -135,16 +149,35 @@ fn cmd_analyze(verb: str, rest: [str], a: [str]) {
         _audit("analyze", verb, 0)
         return
     }
-    let mut rest_str = ""
-    for r in rest { rest_str = rest_str + " " + shq(r) }
-    let cmd = "hexa-bio" + rest_str
+    // Default (no extra args): lint this verb's root .tape via hexa-bio's
+    // cohort LATTICE_POLICY linter. Explicit args → raw pass-through.
+    let mut cmd = ""
+    if len(rest) == 0 {
+        if tp == "" {
+            println("florea analyze " + verb + " — no domain .tape (verb is .md-only)")
+            println("  status: SKIP (nothing to lint; pass hexa-bio args for molecular analysis)")
+            if json_mode(a) {
+                println("{\"florea\":\"" + VERSION + "\",\"verb\":\"" + verb + "\",\"analyze\":\"SKIP\",\"reason\":\"no domain tape\"}")
+            }
+            _audit("analyze", verb, 0)
+            return
+        }
+        cmd = "hexa-bio tape-lint " + shq(tp)
+        if json_mode(a) { cmd = cmd + " --json" }
+    } else {
+        let mut rest_str = ""
+        for r in rest { rest_str = rest_str + " " + shq(r) }
+        cmd = "hexa-bio" + rest_str
+    }
     println("florea analyze " + verb + " → shelling out: " + cmd)
     let out = exec(cmd + " 2>&1")
     println(out.trim())
+    let lint_fail = out.contains("__TAPE_LATTICE_HONESTY__ FAIL")
     if json_mode(a) {
         println("{\"florea\":\"" + VERSION + "\",\"verb\":\"" + verb + "\",\"analyze\":\"DELEGATED\",\"shell_out\":\"hexa-bio\"}")
     }
-    _audit("analyze", verb, 0)
+    _audit("analyze", verb, if lint_fail { 1 } else { 0 })
+    if lint_fail { exit(1) }
 }
 
 fn cmd_selftest(a: [str]) {
@@ -190,7 +223,10 @@ fn cmd_help() {
     println("  list             verb table")
     println("  selftest         7-verb spec presence sweep")
     println("  analyze <verb> [hexa-bio args...]")
-    println("                   shell-out to hexa-bio for n=6 / selftest / witness work")
+    println("                   no args  → hexa-bio tape-lint <verb root .tape>")
+    println("                              (cohort LATTICE_POLICY honesty lint)")
+    println("                   w/ args  → raw hexa-bio pass-through")
+    println("                   verbs incl. androgenetic_alopecia (tape-only)")
     println("                   (SKIP if hexa-bio not on PATH — per AGENTS.tape g_use_hexa_bio_cli)")
     println("")
     println("global flags:")

@@ -110,12 +110,13 @@ florea/
 ├── LICENSE                                # MIT
 ├── README.md                              # this file (atlas/README-FORMAT.md compliant)
 ├── TAPE-AUDIT.md                          # .tape v1.x adoption audit ledger
-├── COSMETIC-SURGERY.{tape,log.tape}       # verb 1 · domain SSOT (root convention)
-├── HAIR-REGENERATION.{tape,log.tape}      # verb 2 · domain SSOT
-├── MENS-INTIMATE-CLEANSER.{tape,log.tape} # verb 3 · domain SSOT
-├── PERFUMERY.{tape,log.tape}              # verb 4 · domain SSOT
-├── TATTOO-REMOVAL.{tape,log.tape}         # verb 5 · domain SSOT
-├── WOMENS-INTIMATE-CLEANSER.{tape,log.tape} # verb 6 · domain SSOT
+├── ANDROGENETIC-ALOPECIA.{tape,log.tape} # AGA · male-pattern (split 2026-05-15, tape-only)
+├── COSMETIC-SURGERY.{tape,log.tape}       # domain SSOT (root convention)
+├── HAIR-REGENERATION.{tape,log.tape}      # regeneration TECHNOLOGY (de-novo neogenesis)
+├── MENS-INTIMATE-CLEANSER.{tape,log.tape} # domain SSOT
+├── PERFUMERY.{tape,log.tape}              # domain SSOT
+├── TATTOO-REMOVAL.{tape,log.tape}         # domain SSOT
+├── WOMENS-INTIMATE-CLEANSER.{tape,log.tape} # domain SSOT
 ├── cli/                                   # florea CLI driver
 ├── cosmetic-surgery/                      # verb 1 · spec (.md)
 ├── hair-regeneration/                     # verb 2 · spec (.md)
@@ -133,7 +134,16 @@ florea/
 
 Domain `.tape` / `.log.tape` files live at repo root (matching the
 hexa-bio convention — all 123 domain tapes at root, no subdir nesting).
-Verb subdirectories now hold only `.md` specs.
+Verb subdirectories now hold only `.md` specs. `HAIR-REGENERATION` and
+`ANDROGENETIC-ALOPECIA` were split 2026-05-15: the former generic
+`hair-regeneration` tape was a lattice-tautology stub conflating
+mechanistically distinct conditions; it is now (a) `ANDROGENETIC-ALOPECIA`
+— evidence-based DHT-pharmacology, male-pattern primary — and (b)
+`HAIR-REGENERATION` — de-novo follicle regeneration *technology*. Both
+carry real clinical/cell-biology citations and decline the n=6 lattice
+as a derivation tool (honest stance). `florea analyze <verb>` (no args)
+runs the cohort `hexa-bio tape-lint` honesty gate on the verb's root
+`.tape`; all three session tapes PASS.
 
 ## Origin
 

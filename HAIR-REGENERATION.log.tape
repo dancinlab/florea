@@ -54,3 +54,19 @@
   reason = "completing the verb move recorded in hexa-bio/DECOMPOSITION_PLAN.md line 48 (`hair-regeneration` MOVED to Floréa 🌸 2026-05-12). Verb directory was moved 2026-05-12; the .tape SSOT pair stayed in hexa-bio as leftover and was processed by mass-split commit 153b5a2 (2026-05-15) in-place. This entry records the relocation to the proper repo-of-record."
   identity-change = "@I id001.parent: dancinlab/hexa-bio → dancinlab/florea (prior-parent retained for provenance)"
   analytic-substrate = "n=6 / selftest / witness work delegated to hexa-bio via `florea analyze hair_regeneration ...` per florea AGENTS.tape @D g_use_hexa_bio_cli"
+
+@A audit_governance_honesty := "Phase-0 governance/honesty audit" :: audit [err d=2026-05-15]
+  scope = "florea AGENTS.tape @D g_honesty_obligation_skincare + @F f_unsupported_efficacy"
+  verdict = "VIOLATION — pre-split tape is a pure n=6 lattice-tautology stub. Zero hair biology: no androgenetic mechanism, no DHT/5α-reductase, no minoxidil/finasteride/dutasteride/PRP, zero clinical citations. Efficacy figures are derived from lattice arithmetic, not biology."
+  exhibit = "row_x_0: '모발 재생 % | 20 → 90 | 체감: σ·(σ-φ)/2 연결' — claims 90% regrowth justified by σ·(σ-φ)/2=60-class lattice identity. Direct @F f_unsupported_efficacy hit (claiming '<verb> works because n=6' without underlying biology)."
+  conflated-conditions = "Single tape mixed mechanistically distinct entities (androgenetic alopecia · regeneration technology) under one generic 'hair-regeneration' label — taxonomically wrong."
+  remedy = "Split per user decision 2026-05-15: (1) new ANDROGENETIC-ALOPECIA.tape — male-pattern primary, real pharmacology + real-limits anchors; (2) this tape rewritten as hair-regeneration TECHNOLOGY (follicular neogenesis / DP-cell / stem-cell / cloning) with real science; lattice-tautology rows removed; n=6 demoted to observation-not-derivation only (often: no natural n=6 invariant, stated honestly)."
+  supersedes = "all pre-split @D row_*/b_* lattice-tautology entries — see supersede event below once rewrite lands"
+
+@A rewrite_as_regeneration_tech := "HAIR-REGENERATION.tape rewritten — scope narrowed to regeneration technology" :: rewrite [ok d=2026-05-15]
+  ~> "all pre-split @D row_x_* / row_tp_* / b_* lattice-tautology entries (full-file replacement)"
+  new-scope = "de-novo follicular neogenesis & follicle bioengineering ONLY. AGA pharmacology removed → ANDROGENETIC-ALOPECIA.tape."
+  content = "Real cell-biology with landmark citations: epithelial–mesenchymal cross-talk · bulge stem cells (Cotsarelis 1990) · WIHN (Ito 2007) · DP spheroid inductivity (Higgins 2013) · bioengineered follicle germ (Toyoshima 2012) · iPSC skin organoid (Lee 2020) · biomimetic 3D follicle (Abaci 2018). 4 real-limits anchors: no scalable human neogenesis (HARD) · DP inductivity loss (SOFT) · mini-organ integration (HARD-functional) · safety+scale (regulatory/economic)."
+  n6 = "@F f_lattice_fit + @N n6_honest_stance state plainly: regeneration tech has no natural n=6 invariant; lattice declined as derivation tool."
+  governance = "Resolves the [err] audit above. Complies with florea AGENTS.tape @D g_honesty_obligation_skincare + @F f_unsupported_efficacy. @N scope_disclaimer marks all approaches preclinical/early-clinical."
+  honesty-note = "No fabricated efficacy. Every approach explicitly tagged with its human-translation gap; nothing claimed as a marketed therapy."
