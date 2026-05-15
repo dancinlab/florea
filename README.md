@@ -115,7 +115,8 @@ florea/
 ├── HAIR-REGENERATION.{tape,log.tape}      # regeneration TECHNOLOGY (de-novo neogenesis)
 ├── MENS-INTIMATE-CLEANSER.{tape,log.tape} # domain SSOT
 ├── PERFUMERY.{tape,log.tape}              # domain SSOT
-├── TATTOO-REMOVAL.{tape,log.tape}         # domain SSOT
+├── TATTOO-REMOVAL.{tape,log.tape}         # LASER/DEVICE physical fragmentation (narrowed 2026-05-15)
+├── TRANSDERMAL-TATTOO-CLEARANCE.{tape,log.tape} # skin-penetration delivery (split 2026-05-15, tape-only)
 ├── WOMENS-INTIMATE-CLEANSER.{tape,log.tape} # domain SSOT
 ├── cli/                                   # florea CLI driver
 ├── cosmetic-surgery/                      # verb 1 · spec (.md)
@@ -139,11 +140,15 @@ Verb subdirectories now hold only `.md` specs. `HAIR-REGENERATION` and
 `hair-regeneration` tape was a lattice-tautology stub conflating
 mechanistically distinct conditions; it is now (a) `ANDROGENETIC-ALOPECIA`
 — evidence-based DHT-pharmacology, male-pattern primary — and (b)
-`HAIR-REGENERATION` — de-novo follicle regeneration *technology*. Both
-carry real clinical/cell-biology citations and decline the n=6 lattice
-as a derivation tool (honest stance). `florea analyze <verb>` (no args)
-runs the cohort `hexa-bio tape-lint` honesty gate on the verb's root
-`.tape`; all three session tapes PASS.
+`HAIR-REGENERATION` — de-novo follicle regeneration *technology*.
+Similarly `TATTOO-REMOVAL` was split 2026-05-15 by modality: it is now
+the LASER/DEVICE physical-fragmentation tape, with the skin-penetration
+half (intradermal/transdermal delivery acting on the pigment-laden
+macrophage recapture cycle) split out to `TRANSDERMAL-TATTOO-CLEARANCE`.
+All carry real clinical/cell-biology citations and decline the n=6
+lattice as a derivation tool (honest stance). `florea analyze <verb>`
+(no args) runs the cohort `hexa-bio tape-lint` honesty gate on the
+verb's root `.tape`; all session tapes PASS.
 
 ## Origin
 

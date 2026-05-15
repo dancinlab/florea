@@ -41,10 +41,12 @@
   version = "1.2"
 
 @I id001 := "tattoo-removal" :: identity-claim [d=2026-05-15 active]
-  kind = "ultimate tattoo removal SSOT — picosecond+R20+PFD clinic / clodronate MN patch / CCR2 antagonist · 3 business domains · n=6 EXACT anchors"
-  brief = "alien_index 10 · closure_grade 9 · 36/36 EXACT · CCR2 차단으로 대식세포 재포획 사이클 천장 해제 · 도메인1 시판 장비만으로 95%+ 완전제거율"
+  kind = "Floréa 🌸 verb · LASER/DEVICE tattoo removal — photothermal/photoacoustic physical fragmentation (picosecond+R20+PFD)"
+  brief = "scope narrowed 2026-05-15 to the laser/device modality · skin-penetration (clodronate MN / CCR2 / intradermal delivery) split out → TRANSDERMAL-TATTOO-CLEARANCE.tape · n=6 NOT a derivation (see §0)"
   parent = "dancinlab/florea"
   prior-parent = "dancinlab/hexa-bio (migrated 2026-05-15 per DECOMPOSITION_PLAN.md)"
+  scope-narrowed = "2026-05-15 — laser/device physical fragmentation only. The migrated body's immune/drug-delivery rows (clodronate MN patch · CCR2 antagonist · iontophoresis/electroporation/PLGA) are SUPERSEDED-BY-SIBLING; authoritative treatment of that modality lives in TRANSDERMAL-TATTOO-CLEARANCE.tape."
+  sibling = "TRANSDERMAL-TATTOO-CLEARANCE.tape (skin-penetration half) — complementary, not competing."
   sibling-log = "TATTOO-REMOVAL.log.tape"
 
 # ── §0 Honesty framing (Phase-2 pass 2026-05-15) ──────────────────────
@@ -65,6 +67,14 @@
 
 @X x_florea_agents := "florea AGENTS.tape" :: governance [active]
   scope = "@D g_honesty_obligation_skincare + @F f_unsupported_efficacy + @D g_use_hexa_bio_cli (analytic verification shells out to hexa-bio)"
+
+@N scope_split_2026_05_15 := "modality split — laser here, skin-penetration in sibling" :: note [required]
+  decision = "2026-05-15: tattoo removal split by modality. THIS tape = laser/device photothermal/photoacoustic fragmentation (incl. §0b structured core). The skin-penetration / intradermal-delivery half (clodronate liposome/MN patch · CCR2-axis antagonist local delivery · iontophoresis/electroporation/sonophoresis · PLGA intradermal depot) is split out to TRANSDERMAL-TATTOO-CLEARANCE.tape."
+  body-status = "The migrated 289-row body still contains immune/delivery rows (e.g. clodronate MN, CCR2, ionto/electroporation). Those are SUPERSEDED-BY-SIBLING — authoritative treatment is now [@x_transdermal_sibling]. Body retained as migration provenance only; §0/§0b remain authoritative here for the laser modality."
+  complementarity = "The two tapes are complementary: laser fragments ink; the sibling targets the macrophage-recapture cycle laser alone plateaus against (Baranska 2018). A real protocol may combine them."
+
+@X x_transdermal_sibling := "TRANSDERMAL-TATTOO-CLEARANCE.tape" :: sibling-tape [active]
+  scope = "split sibling 2026-05-15 — skin-penetration / intradermal delivery acting on the pigment-laden macrophage cycle. Authoritative for the immune/drug-delivery modality that the migrated body here only sketched."
 
 # ── §0b Structured real-science core (authoritative over migrated body) ──
 # Real, accurately-cited tattoo-removal science. AUTHORITATIVE over the

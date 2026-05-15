@@ -34,6 +34,7 @@ fn verb_spec(verb: str) -> str {
 // androgenetic_alopecia is tape-only (split 2026-05-15; no .md subdir).
 fn tape_path(verb: str) -> str {
     if verb == "tattoo_removal"           { return FL + "/TATTOO-REMOVAL.tape" }
+    if verb == "transdermal_tattoo_clearance" { return FL + "/TRANSDERMAL-TATTOO-CLEARANCE.tape" }
     if verb == "hair_regeneration"        { return FL + "/HAIR-REGENERATION.tape" }
     if verb == "androgenetic_alopecia"    { return FL + "/ANDROGENETIC-ALOPECIA.tape" }
     if verb == "cosmetic_surgery"         { return FL + "/COSMETIC-SURGERY.tape" }

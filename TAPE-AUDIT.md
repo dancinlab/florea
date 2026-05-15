@@ -16,7 +16,7 @@ optional dependency for analytic shell-out.
 
 ## C. Domain `.tape` files
 
-**7 domains × 2 (.tape + .log.tape) = 14 files** at repo root (matching
+**8 domains × 2 (.tape + .log.tape) = 16 files** at repo root (matching
 the hexa-bio convention — domain tapes live at root, not in verb
 subdirs), all `tape v1.2`:
 
@@ -25,7 +25,8 @@ subdirs), all `tape v1.2`:
 - `HAIR-REGENERATION.{tape,log.tape}`
 - `MENS-INTIMATE-CLEANSER.{tape,log.tape}`
 - `PERFUMERY.{tape,log.tape}`
-- `TATTOO-REMOVAL.{tape,log.tape}`
+- `TATTOO-REMOVAL.{tape,log.tape}`  ← narrowed 2026-05-15 to laser/device
+- `TRANSDERMAL-TATTOO-CLEARANCE.{tape,log.tape}`  ← split 2026-05-15, tape-only
 - `WOMENS-INTIMATE-CLEANSER.{tape,log.tape}`
 
 6 pairs were migrated from `dancinlab/hexa-bio` on 2026-05-15
@@ -36,16 +37,20 @@ relocated to repo-of-record). Each migrated `.tape` has `@I id001.parent
 `.log.tape` records the migration via an `@A migrate_hexa_bio_to_florea`
 entry. `skincare` is `.md`-only (no `.tape` leftover to migrate).
 
-`ANDROGENETIC-ALOPECIA` is the 7th, NOT migrated — it was split out of
-the generic `HAIR-REGENERATION` tape (2026-05-15). Phase-0 audit found
-the pre-split `HAIR-REGENERATION` was a lattice-tautology stub violating
-`@F f_unsupported_efficacy`. Remediation: (1) new `ANDROGENETIC-ALOPECIA`
-— evidence-based DHT pharmacology (male-pattern primary) + 5 real-limits
-anchors + landmark citations; (2) `HAIR-REGENERATION` rewritten as
-de-novo follicle regeneration *technology*; (3) `TATTOO-REMOVAL` given a
-§0 honesty-framing pass + §8 citation promotion. All three now PASS the
-cohort `hexa-bio tape-lint` LATTICE_POLICY honesty gate (invoked via
-`florea analyze <verb>`).
+`ANDROGENETIC-ALOPECIA` and `TRANSDERMAL-TATTOO-CLEARANCE` are NOT
+migrated — they are split-outs (2026-05-15). Phase-0 audit found the
+pre-split `HAIR-REGENERATION` was a lattice-tautology stub violating
+`@F f_unsupported_efficacy`. Remediation + modality splits: (1) new
+`ANDROGENETIC-ALOPECIA` — evidence-based DHT pharmacology (male-pattern
+primary) + 5 real-limits anchors + landmark citations; (2)
+`HAIR-REGENERATION` rewritten as de-novo follicle regeneration
+*technology*; (3) `TATTOO-REMOVAL` honesty-framed (§0) + structured
+real-science core (§0b) + then narrowed to the LASER/DEVICE modality;
+(4) new `TRANSDERMAL-TATTOO-CLEARANCE` — skin-penetration / intradermal
+delivery acting on the pigment-laden macrophage recapture cycle
+(Baranska 2018, van Rooijen 1994, Prausnitz) + 5 real-limits anchors.
+All PASS the cohort `hexa-bio tape-lint` LATTICE_POLICY honesty gate
+(invoked via `florea analyze <verb>`).
 
 Verb subdirectories (`cosmetic-surgery/`, `hair-regeneration/`, ...)
 now hold only the `.md` specs — domain SSOT (`.tape`) sits at root.
@@ -63,20 +68,23 @@ Per-verb `.log.tape` siblings hold the chronological event stream
   `hexa-bio tape-lint` — the cohort LATTICE_POLICY honesty gate (checks
   `@F` lattice-fit guard + `@N` honest stance + ≥1 real citation; flags
   lattice-derivation lines). Per `AGENTS.tape` `@D g_use_hexa_bio_cli`.
-- **`.tape` future fit**: ALREADY adopted (v1.2 across AGENTS + 7 domains).
+- **`.tape` future fit**: ALREADY adopted (v1.2 across AGENTS + 8 domains).
 - **hxc/n12**: not yet adopted.
 
 ## Verdict
 
-**ACTIVE** — `.tape v1.2` fully adopted (AGENTS.tape + 14 domain-level
+**ACTIVE** — `.tape v1.2` fully adopted (AGENTS.tape + 16 domain-level
 `.tape`/`.log.tape` files). Brand-SSOT architecture: Floréa owns the
 domain assets (.md + .tape), `hexa-bio` provides the analytic engine via
 CLI shell-out (`florea analyze <verb>` → `hexa-bio tape-lint`). No local
 analysis infrastructure by design — `selftest/`, `_python_bridge/`,
 `_qiskit_bridge/`, `_absorption_bridge/` all stay in hexa-bio per
 Strategy A (2026-05-15, florea `3dc13c0` + migrations `04d4d4e`,
-`4c72695`, `ef2c7de`). Honesty-remediation cycle (2026-05-15): the
-`HAIR-REGENERATION` lattice-tautology violation was split into
-`ANDROGENETIC-ALOPECIA` (evidence-based) + rewritten `HAIR-REGENERATION`
-(regeneration tech); `TATTOO-REMOVAL` framing-hardened; all 3 PASS the
-`hexa-bio tape-lint` gate.
+`4c72695`, `ef2c7de`). Honesty-remediation + modality-split cycle
+(2026-05-15): the `HAIR-REGENERATION` lattice-tautology violation was
+split into `ANDROGENETIC-ALOPECIA` (evidence-based) + rewritten
+`HAIR-REGENERATION` (regeneration tech); `TATTOO-REMOVAL` was
+framing-hardened, given a structured real-science core, then narrowed
+to laser/device with the skin-penetration half split out to
+`TRANSDERMAL-TATTOO-CLEARANCE`. All 8 domain tapes PASS the `hexa-bio
+tape-lint` gate.
