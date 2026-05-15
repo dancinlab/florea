@@ -151,6 +151,50 @@
   status = "Not standard of care as of knowledge cutoff; listed for completeness, not endorsed."
   |> "[@x_garza_2012]"
 
+# ── §3b Head-to-head modality comparison (qualitative, source-grounded) ─
+
+@D cmp_axis := "comparison axis definition" :: comparison [ok]
+  dimensions = "Each modality below is compared on: (1) mechanism target, (2) direction/relative magnitude of DHT change, (3) evidence grade, (4) durability/reversibility, (5) signature adverse event."
+  honesty = "Magnitudes are QUALITATIVE (direction + relative ordering + cited landmark trial), not lattice-derived constants. Exact percentages live only where a single landmark RCT reported them (§3) and are paraphrased, not re-derived."
+  ordering-claim = "On serum DHT suppression depth the landmark ordering is: dutasteride > finasteride ≫ minoxidil (no direct DHT effect) — established by the dutasteride-vs-finasteride head-to-head."
+  |> "[@x_olsen_2006] · [@x_gubelin_2014]"
+
+@D cmp_finasteride := "finasteride — comparison row" :: comparison [ok]
+  target = "Selective SRD5A2 (scalp-dominant isoenzyme)."
+  dht-change = "Large reduction in scalp & serum DHT, but bounded — type-I escape leaves residual DHT (see [@lim_dht_ceiling])."
+  evidence-grade = "HIGHEST for oral AGA monotherapy: large multicentre placebo-controlled RCT with multi-year follow-up (Kaufman/Finasteride Male Pattern Hair Loss Study Group)."
+  durability = "Suppressive; benefit reverses on cessation (see [@lim_adherence]); short half-life → fast washout."
+  signature-ae = "Sexual dysfunction (libido/erectile/ejaculatory), low absolute excess vs placebo, mostly reversible; teratogenic (female-fetus category-X)."
+  |> "[@x_kaufman_1998]"
+
+@D cmp_dutasteride := "dutasteride — comparison row" :: comparison [ok]
+  target = "Dual SRD5A1+SRD5A2 (closes the type-I escape route finasteride leaves open)."
+  dht-change = "Deeper serum DHT suppression than finasteride; superior hair-count gain in the direct head-to-head RCT."
+  evidence-grade = "HIGH: randomized active-controlled (vs finasteride) + dose-ranging placebo-controlled trial; regulatory approval for AGA is region-limited (South Korea, Japan), off-label elsewhere."
+  durability = "Suppressive; long elimination half-life (≈weeks) → prolonged washout, slower relapse onset but same eventual dependence."
+  signature-ae = "Class-equivalent sexual AE profile; same teratogenic precaution; longer washout extends exposure window."
+  |> "[@x_olsen_2006] · [@x_gubelin_2014]"
+
+@D cmp_minoxidil := "minoxidil (topical / LDOM) — comparison row" :: comparison [ok]
+  target = "NOT an antiandrogen — K_ATP-channel opener; anagen prolongation; effect is downstream/parallel to the DHT axis."
+  dht-change = "None — does not alter DHT; complementary mechanism, hence routinely combined with a 5ARI."
+  evidence-grade = "HIGH for topical (5%>2% dose-response RCT, Olsen 2002); LDOM evidence is review/cohort-grade and rapidly maturing (Randolph & Tosti 2021)."
+  durability = "Suppressive; reverses on cessation; topical response gated by follicular SULT1A1 activity (responder pharmacogenetics — see [@lim_sult1a1])."
+  signature-ae = "Topical: irritation, dose-dependent hypertrichosis, transient telogen shedding. LDOM: hypertrichosis, fluid retention, postural/cardiac effects."
+  |> "[@x_olsen_2002] · [@x_randolph_tosti_2021]"
+
+@D cmp_transplant := "transplantation — comparison row" :: comparison [ok]
+  target = "Mechanically relocates androgen-insensitive donor follicles (donor dominance) — bypasses, does not modify, the DHT axis."
+  dht-change = "None — transplanted follicles are intrinsically androgen-resistant; surrounding native follicles keep miniaturizing."
+  evidence-grade = "Procedural standard of care for established loss; benefit is anatomical/redistributive, not pharmacodynamic."
+  durability = "Transplanted grafts are durable (donor dominance, [@x_orentreich_1959]); finite donor reservoir caps total achievable coverage (see [@lim_donor_finitude])."
+  signature-ae = "Surgical: scarring (FUT strip / FUE dot), shock loss, donor depletion if over-harvested; concurrent medical therapy is standard to protect native hair."
+  |> "[@x_orentreich_1959]"
+
+@D cmp_synthesis := "comparison synthesis" :: comparison [ok]
+  combination-rationale = "5ARI (DHT suppression) + minoxidil (anagen prolongation) + transplant (redistribution) act on non-overlapping mechanisms → additive in practice; this is mechanistic complementarity, not a lattice product."
+  no-cure-row = "No row is curative: every pharmacologic modality is suppressive and adherence-bound ([@lim_adherence]); transplant is conservation-bound ([@lim_donor_finitude]). The honest summary is a ceiling, not an invariant."
+
 # ── §4 Real-limits anchors (LATTICE_POLICY g1 — real-limits-first) ────
 
 @D lim_donor_finitude := "donor finitude / no scalable de-novo neogenesis" :: real-limit [ok required]
@@ -176,6 +220,18 @@
 @D lim_adherence := "suppressive-not-curative" :: real-limit [ok required]
   wall = "BEHAVIORAL/ECONOMIC LIMIT"
   statement = "All approved AGA therapy is suppressive. Cessation → loss resumes within ≈6–12 months. Lifelong adherence is the true constraint on real-world outcomes."
+
+@D lim_sult1a1 := "minoxidil responder pharmacogenetics (SULT1A1)" :: real-limit [ok required]
+  wall = "BIOLOGICAL LIMIT (host-intrinsic)"
+  statement = "Topical minoxidil is a prodrug requiring follicular sulfotransferase SULT1A1 to form active minoxidil sulfate. SULT1A1 enzyme activity varies widely between individuals; low-activity scalps are constitutional poor responders to topical minoxidil regardless of dose or adherence."
+  consequence = "A non-trivial fraction of users cannot respond to topical minoxidil for an intrinsic enzymatic reason — not a dosing failure. Oral minoxidil (systemic activation) and 5ARI/transplant routes bypass this particular limit."
+  |> "[@x_buhl_1990] · [@x_goren_2014]"
+
+@D lim_type1_escape := "type-I 5α-reductase escape (mechanistic detail of the ceiling)" :: real-limit [ok required]
+  wall = "SOFT WALL (pharmacodynamic, mechanistic refinement of [@lim_dht_ceiling])"
+  statement = "Finasteride is SRD5A2-selective; cutaneous/sebaceous SRD5A1 (type-I) continues to convert testosterone to DHT, so scalp DHT is reduced but not eliminated. Dual inhibition (dutasteride) closes the type-I route and deepens suppression — yet residual androgen signalling and the systemic-endocrine cost of total blockade still bound the achievable effect."
+  consequence = "The DHT-suppression ceiling is not a single number but an isoenzyme-coverage limit: monotherapy depth < dual-inhibition depth < (unreachable) complete blockade. Specializes [@lim_dht_ceiling]."
+  |> "[@x_olsen_2006]"
 
 # ── §5 n=6 lattice stance (HONEST — observation, not derivation) ──────
 
@@ -209,6 +265,29 @@
   mechanism = "Same AGA disease; androgen dependence less uniform than male-pattern; rule out hyperandrogenism (PCOS), thyroid, iron deficiency, telogen effluvium mimics."
   therapy = "Topical minoxidil (first-line, 2% or 5%); oral antiandrogens (spironolactone, where appropriate) under specialist care; LDOM; finasteride/dutasteride only in specific post-menopausal/specialist contexts (teratogenicity precludes use with pregnancy potential)."
   honesty = "Female-pattern is summarized here, not exhaustively; it is the secondary axis of this tape."
+
+@D female_workup := "female-pattern differential workup" :: domain [ok]
+  why = "Female central thinning is NOT presumptively androgenetic — it has more reversible mimics than the male phenotype, so a workup precedes committing to AGA management."
+  rule-out-endocrine = "Hyperandrogenism / PCOS: assess hirsutism, acne, menstrual irregularity; the clinical picture (not the lattice) drives whether androgen/PCOS evaluation is indicated."
+  rule-out-thyroid = "Thyroid dysfunction (hypo- or hyper-) causes diffuse hair loss that resolves on correction — a treatable confounder, not AGA."
+  rule-out-iron = "Iron deficiency / low ferritin is a recognised contributor to telogen shedding in women; identify and correct before attributing loss solely to AGA."
+  rule-out-te = "Telogen effluvium (post-partum, illness, crash diet, drug-induced) is diffuse and self-limited — distinguish by history, acuity, and shedding pattern from the slow patterned course of AGA."
+  scarring-exclusion = "Exclude frontal fibrosing alopecia / lichen planopilaris (scarring, irreversible) — a different disease class needing different management ([@dx_definition] not-this-tape)."
+  honesty = "These are standard differential considerations; this tape does not prescribe a lab panel — it flags that female AGA is a diagnosis of exclusion in clinical practice."
+
+@D female_staging := "female-pattern staging detail" :: classification [ok]
+  ludwig = "Ludwig grades I–III: progressive central/crown density loss with a preserved frontal fringe (I = mild, III = near-total central involvement)."
+  sinclair = "Sinclair 1–5: a clinical/photographic severity scale (1 = normal, 5 = advanced) commonly used to track response over time."
+  olsen-pattern = "Olsen frontal-accentuation ('Christmas-tree') — breach of the frontal scalp ahead of crown, a recognised female presentation variant."
+  staging-honesty = "Stage counts (Ludwig III, Sinclair 5) are clinical-scale ordinals — explicitly not lattice values and not to be lattice-fit ([@f_lattice_fit])."
+  use = "Staging sets response expectation and tracks change; it does not by itself establish that the loss is androgenetic (see [@female_workup])."
+
+@D female_teratogenicity := "5ARI teratogenicity constraint in women" :: real-limit [ok required]
+  wall = "HARD WALL (reproductive-safety, absolute in pregnancy-potential)"
+  statement = "5α-reductase inhibitors (finasteride, dutasteride) feminize the external genitalia of a male fetus and are contraindicated in women who are or may become pregnant; dutasteride's long half-life extends the precautionary window. Women of childbearing potential should not handle crushed/broken finasteride tablets."
+  consequence = "In women with pregnancy potential, the entire 5ARI modality is off the table regardless of efficacy — antiandrogen options narrow to agents like spironolactone under specialist care with reliable contraception; topical minoxidil / LDOM remain the non-antiandrogen mainstays."
+  basis = "5ARI fetal-feminization risk is established product-labeling pharmacology (mechanism: DHT is required for normal male external-genital development; finasteride/dutasteride block its synthesis). Stated as well-known mechanism-of-action consequence, not attributed to a single RCT."
+  |> "[@x_olsen_2006] (dual-inhibition / class pharmacology)"
 
 # ── §8 Cross-links ────────────────────────────────────────────────────
 
@@ -255,3 +334,9 @@
 
 @X x_hagenaars_2017 := "Hagenaars SP et al 2017" :: literature [active]
   ref = "Hagenaars SP et al. Genetic prediction of male pattern baldness. PLoS Genet 2017;13:e1006594. (UK Biobank, polygenic)"
+
+@X x_buhl_1990 := "Buhl AE et al 1990" :: literature [active]
+  ref = "Buhl AE, Waldon DJ, Baker CA, Johnson GA. Minoxidil sulfate is the active metabolite that stimulates hair follicles. J Invest Dermatol 1990;95:553–557. (minoxidil = prodrug; sulfated metabolite is active)"
+
+@X x_goren_2014 := "Goren A et al 2014" :: literature [active]
+  ref = "Goren A et al. Clinical utility and validity of minoxidil response testing in androgenetic alopecia. (follicular sulfotransferase / SULT1A1 activity predicts topical-minoxidil response — responder pharmacogenetics; primary-author/era cited, exact volume not asserted)"

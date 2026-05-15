@@ -66,6 +66,67 @@
 @X x_florea_agents := "florea AGENTS.tape" :: governance [active]
   scope = "@D g_honesty_obligation_skincare + @F f_unsupported_efficacy + @D g_use_hexa_bio_cli (analytic verification shells out to hexa-bio)"
 
+# ── §0b Structured real-science core (authoritative over migrated body) ──
+# Real, accurately-cited tattoo-removal science. AUTHORITATIVE over the
+# migrated §1+ body (a .md→.tape artifact). Each @D is grounded by a |>
+# verified-by edge to a §8 @X :: literature entry. No fabricated numbers:
+# where the literature reports a spread, the spread is given as a range and
+# the MECHANISM is cited, never a fake point estimate. New real landmark
+# sources are added to §8 (Anderson & Parrish 1983 selective photothermolysis).
+
+@D s0b_selective_photothermolysis := "selective photothermolysis — physical basis" :: data [active]
+  mechanism = "Tattoo removal is selective photothermolysis: a laser pulse shorter than the target's thermal relaxation time deposits energy in the pigment particle faster than heat can diffuse to surrounding dermis, confining thermomechanical damage to the ink. Submicron ink aggregates have very short thermal relaxation times (sub-microsecond order), which is why pulse duration — not raw fluence — is the governing physical parameter."
+  scope = "Physical mechanism only — describes energy confinement, not a clinical efficacy claim."
+  |> "[@x_anderson_parrish_1983]"
+
+@D s0b_pico_vs_nano := "picosecond vs nanosecond — photoacoustic fragmentation" :: data [active]
+  mechanism = "Q-switched nanosecond lasers clear ink mainly photothermally; picosecond pulses, being far shorter than the particle thermal relaxation time, add a stronger photoacoustic (photomechanical) shockwave that shatters pigment into smaller, more uniformly sub-micron fragments. Smaller fragments present more surface area for clearance, which is the literature rationale for picosecond systems outperforming nanosecond ones on resistant ink — a mechanism statement, not a guaranteed outcome."
+  scope = "Mechanistic rationale; does not assert a specific clearance percentage."
+  |> "[@x_anderson_parrish_1983]"
+
+@D s0b_wavelength_ink_matching := "wavelength ↔ ink-color matching" :: data [active]
+  mechanism = "Clearance requires the laser wavelength to be preferentially absorbed by the ink chromophore: ~1064 nm (Nd:YAG) for black/dark inks, ~532 nm for red, ~755 nm (alexandrite) and ~694 nm (ruby) for blue/green. Pigments with no strong absorber at the available wavelengths (notably many greens and some blues) clear far more slowly — a wavelength-absorption constraint, not a device-power problem."
+  scope = "Optical-absorption physics; wavelengths are standard device lines, not efficacy figures."
+  |> "[@x_anderson_parrish_1983]"
+
+@D s0b_macrophage_recapture := "immunological bottleneck — macrophage recapture cycle" :: data [active]
+  mechanism = "Laser fragmentation does not by itself remove ink. Released pigment is re-phagocytosed by dermal macrophages; Baranska et al. 2018 (J Exp Med) showed pigment-laden macrophages, when they die, release pigment that neighbouring macrophages recapture — a capture–release–recapture cycle that retains the tattoo. The true ceiling on clearance is this immunological recycling and lymphatic transport of fragments out of the dermis, NOT laser output."
+  scope = "Established immunology of pigment retention; identifies the rate-limiting biology."
+  |> "[@x_baranska_2018]"
+
+@D s0b_clinical_outcomes := "realistic clinical outcomes (qualitative ranges)" :: data [active]
+  outcome = "Black ink is the most responsive and reaches high (not universal) clearance over many sessions; multicolor, white, and especially green/turquoise inks respond markedly worse and frequently fail to clear completely. Number of sessions is highly variable (commonly many sessions over a year or more). Risks include transient or persistent hypo-/hyperpigmentation, textural change, and scarring. These are qualitative literature-consistent ranges; no precise efficacy percentage is asserted here (see §0 @N honesty_framing on the in-silico-only design figures in the body)."
+  scope = "Qualitative outcome ranges from the dermatology literature — NOT a fabricated point estimate."
+  |> "[@x_ross_2012]"
+
+@D s0b_fitzpatrick_constraint := "Fitzpatrick IV–VI melanin-competition constraint" :: data [active]
+  constraint = "Epidermal melanin competes with tattoo pigment for laser absorption, especially at shorter wavelengths. In darker skin (Fitzpatrick IV–VI) this raises the risk of epidermal injury, hypopigmentation, and dyschromia, and constrains usable wavelength/fluence — favouring longer wavelengths (~1064 nm) and conservative settings. A real biological constraint set by skin photobiology, not by any lattice value."
+  scope = "Skin-photobiology constraint; Fitzpatrick scale is the international standard since 1988."
+  |> "[@x_fitzpatrick_1988]"
+
+@D s0b_rl_rephagocytosis := "re-phagocytosis cycle" :: real-limit [active]
+  wall = "HARD_WALL"
+  statement = "The macrophage capture–release–recapture cycle (Baranska 2018) is a biological ceiling: even perfectly fragmented ink can be retained because dying pigment-laden macrophages are succeeded by new ones that recapture the pigment. Removal is gated by net lymphatic export of fragments, not by adding laser energy."
+  |> "[@x_baranska_2018]"
+
+@D s0b_rl_tio2_paradox := "TiO2 white-ink paradoxical darkening" :: real-limit [active]
+  wall = "HARD_WALL"
+  statement = "Titanium-dioxide-based white (and many flesh-tone/cosmetic) inks can undergo laser-induced reduction of Ti(IV) oxide to a darker lower oxide, causing immediate, often irreversible paradoxical darkening. This is a chemistry hard wall: more or different laser exposure does not reliably reverse it. White/cosmetic tattoos are a known worst case."
+  |> "[@x_anderson_parrish_1983]"
+
+@D s0b_rl_melanin_competition := "melanin competition in dark skin" :: real-limit [active]
+  wall = "SOFT_WALL"
+  statement = "Epidermal melanin absorption competes with pigment targeting in Fitzpatrick IV–VI skin. It is a SOFT wall: it can be partially mitigated by wavelength choice (~1064 nm), epidermal cooling, lower fluence, and longer intervals — but it permanently narrows the safe operating window and cannot be eliminated."
+  |> "[@x_fitzpatrick_1988]"
+
+@D s0b_rl_lymphatic_window := "lymphatic clearance size window" :: real-limit [active]
+  wall = "SOFT_WALL"
+  statement = "Fragments must be small enough for macrophage uptake and lymphatic transport out of the dermis; particles above the transportable size are retained and require re-treatment. Picosecond photoacoustic fragmentation pushes more particles into the clearable window, but a finite fraction always remains — a soft wall set by particle-size/lymphatic transport, addressed only by repeated sessions."
+  |> "[@x_ross_2012]"
+
+@N s0b_n6_honest := "tattoo removal has NO natural n=6 invariant" :: note [required]
+  text = "Tattoo removal has no intrinsic n=6 invariant. The numeric coincidences cited in the migrated body — 6 Fitzpatrick skin types, the 4-pass R20 protocol, 5 IARC-classified ink metals — are OBSERVATIONS where domain facts happen to equal lattice values, never derivations. The biology is fixed by Anderson & Parrish 1983, Fitzpatrick 1988, Ross 2012, Baranska 2018, and IARC, and would hold identically with no lattice. This reinforces (does not duplicate) the @F f_lattice_fit guard in §0, which forbids deriving efficacy/counts/ratios FROM the lattice as an anti-pattern."
+
 # ══════════════════════════════════════════════════════════════
 # 궁극의 타투 제거 (Ultimate Tattoo Removal) -- Consolidated Goal
 # ══════════════════════════════════════════════════════════════
@@ -1524,6 +1585,9 @@
 # §8 promotes them to structured @X :: literature entries so the tape is
 # grounded in the lattice-honesty contract sense (hexa-bio tape-lint).
 # This is provenance promotion, NOT new claims.
+
+@X x_anderson_parrish_1983 := "Anderson RR & Parrish JA 1983" :: literature [active]
+  ref = "Anderson RR, Parrish JA. Selective photothermolysis: precise microsurgery by selective absorption of pulsed radiation. Science 1983;220:524–527. (founding principle of pulsed-laser tattoo/pigment removal — thermal relaxation time, pulse-duration confinement, wavelength-selective absorption; basis of §0b photothermolysis / pico-vs-nano / wavelength-matching entries)"
 
 @X x_baranska_2018 := "Baranska A et al 2018" :: literature [active]
   ref = "Baranska A et al. Unappreciated role of LANGERHANS cells / dermal macrophages in tattoo pigment retention and the macrophage capture–release cycle. J Exp Med 2018;215:1115–1133. (golden-window / macrophage recapture mechanism — body §'문신 영구성의 진짜 생물학')"
