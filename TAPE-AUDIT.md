@@ -37,6 +37,18 @@ relocated to repo-of-record). Each migrated `.tape` has `@I id001.parent
 `.log.tape` records the migration via an `@A migrate_hexa_bio_to_florea`
 entry. `skincare` is `.md`-only (no `.tape` leftover to migrate).
 
+Audit finding (2026-05-15): all 4 unprocessed migrated `.tape`s
+(`COSMETIC-SURGERY`, `PERFUMERY`, `MENS-INTIMATE-CLEANSER`,
+`WOMENS-INTIMATE-CLEANSER`) were the SAME lattice-tautology-stub class
+as the pre-split `HAIR-REGENERATION` — generic `@I` brief, σ/τ/φ/J₂-derived
+figures, zero domain science, zero citations, no `@F`/`@N` honesty
+contract (each `.log.tape` carries an `@A audit_governance_honesty
+[err]`). All 4 were rewritten the same cycle as real-science SSOTs
+(cosmetic-surgery wound-healing/flap biology; perfumery volatility/
+olfaction/IFRA; male & female intimate-cleanser dermatology/microbiome)
+with `@F f_lattice_fit` + `@N n6_honest_stance` + real `@X :: literature`
+and real-limit anchors; lattice rows superseded via `~>`.
+
 `ANDROGENETIC-ALOPECIA` and `TRANSDERMAL-TATTOO-CLEARANCE` are NOT
 migrated — they are split-outs (2026-05-15). Phase-0 audit found the
 pre-split `HAIR-REGENERATION` was a lattice-tautology stub violating

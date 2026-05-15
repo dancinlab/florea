@@ -38,342 +38,181 @@
 # Full spec: ~/core/tape/spec/tape.md (or github.com/dancinlab/tape)
 # ══════════════════════════════════════════════════════════════════════
 
-
 # ══════════════════════════════════════════════════════════════
 # WOMENS-INTIMATE-CLEANSER.tape — architecture-current (editable per v1.2)
 # Event history → WOMENS-INTIMATE-CLEANSER.log.tape sibling
+# REWRITTEN 2026-05-15: was a lattice-tautology .md→.tape migration stub;
+# now a real vulvovaginal-hygiene-science knowledge SSOT (see
+# WOMENS-INTIMATE-CLEANSER.log.tape audit + supersede events).
 # ══════════════════════════════════════════════════════════════
 
 @V := "tape" :: spec [active]
   version = "1.2"
 
 @I id001 := "womens-intimate-cleanser" :: identity-claim [d=2026-05-15 active]
-  kind = "HEXA-Bio family · womens intimate cleanser substrate"
-  brief = "per-domain substrate · n=6 mapping · biological/biochemical context"
+  kind = "Floréa 🌸 verb · women's intimate (vulvar) cleanser — consumer-hygiene knowledge SSOT grounded in vulvovaginal physiology & microbiome science"
+  brief = "external VULVAR cleansing only · the VAGINA is self-cleaning and must not be washed/douched · real anatomy + microbiome + harm evidence · n=6 not used as derivation"
   parent = "dancinlab/florea"
   prior-parent = "dancinlab/hexa-bio (migrated 2026-05-15 per DECOMPOSITION_PLAN.md)"
+  scope-rewritten = "2026-05-15 — was a lattice-tautology stub (generic 'per-domain substrate · n=6 mapping' brief; @D row_* pH/efficacy numbers derived from σ/τ/φ; zero science). Rewritten to real hygiene science with cited literature (see WOMENS-INTIMATE-CLEANSER.log.tape audit_governance_honesty + rewrite_real_science)."
   sibling-log = "WOMENS-INTIMATE-CLEANSER.log.tape"
+  scope = "in-silico consumer-hygiene knowledge SSOT · physiology/microbiome survey · NOT a marketed product efficacy sheet · NOT medical advice"
+
+@N scope_disclaimer := "consumer-hygiene scope, not medical advice" :: note [required]
+  text = "This tape is a consumer-hygiene KNOWLEDGE SSOT, NOT medical advice and NOT a product efficacy claim. An intimate cleanser is a cosmetic external-skin wash; it does NOT diagnose, prevent, or treat bacterial vaginosis (BV), vulvovaginal candidiasis (thrush), trichomoniasis, sexually transmitted infections, or any vulvovaginal disease. Persistent abnormal discharge, odor, itching, pain, bleeding, or any genitourinary symptom requires evaluation by a qualified clinician — a wash is not a substitute. Nothing here asserts a therapeutic effect."
+
+# ── §1 Anatomy & physiology — VULVA vs VAGINA (the load-bearing distinction) ─
+
+@D anat_vulva := "the VULVA is external skin — washable externally" :: physiology [ok]
+  what = "The vulva is the EXTERNAL genital region: mons pubis, labia majora/minora, clitoral hood, and the vestibule. It is keratinized/partly keratinized skin and mucocutaneous tissue, exposed to sweat, urine, and the environment."
+  ph = "Vulvar skin surface pH is mildly acidic, reported in roughly the ~3.8–5.0 range (skin-surface measurements; somewhat higher and more variable than the vaginal lumen, and influenced by site, occlusion, sweat, and hygiene)."
+  cleansing-relevance = "Because it is external skin, the vulva CAN be gently cleansed externally with water or a mild, low-irritation wash — this is the only region an 'intimate cleanser' legitimately addresses."
+  |> "[@x_lynch_2017]"
+
+@D anat_vagina := "the VAGINA is internal mucosa — self-cleaning, do NOT wash internally" :: physiology [ok]
+  what = "The vagina is an INTERNAL fibromuscular canal lined by non-keratinized stratified squamous mucosa. It is not skin and is not meant to be externally accessed by cleansing products."
+  ph = "The healthy reproductive-age vaginal lumen is strongly acidic, typically about pH ~3.5–4.5, maintained by resident lactobacilli."
+  self-cleaning = "The vagina is SELF-CLEANING: cyclical epithelial turnover, glycogen-fed Lactobacillus fermentation, and physiological discharge continuously clear the lumen. It does not require — and is harmed by — internal washing, douching, or intravaginal 'cleansers'."
+  hard-boundary = "An intimate cleanser must remain EXTERNAL (vulvar). Internal/vaginal application is outside legitimate hygiene and is addressed as a harm in [@harm_douching] / [@lim_douching_harm]."
+  |> "[@x_lynch_2017]"
+  |> "[@x_amabebe_2018]"
+
+@D phys_estrogen_glycogen := "estrogen → glycogen → lactic acid drives the acidic vaginal environment" :: mechanism [ok]
+  axis = "Estrogen thickens the vaginal epithelium and drives glycogen accumulation; glycogen (via host and microbial breakdown) feeds Lactobacillus, which ferments it to LACTIC ACID, producing and sustaining the low vaginal pH."
+  consequence = "The acidic, lactic-acid-rich milieu suppresses many non-resident and pathogenic organisms — this is an endogenous, self-regulating defense, not something a wash creates or improves."
+  life-stage = "Estrogen-dependent: the system is markedly different pre-puberty and post-menopause (lower estrogen → less glycogen → higher pH, different flora); this tape's quantitative ranges describe the reproductive-age state."
+  |> "[@x_amabebe_2018]"
+  |> "[@x_odoherty_2014]"
+
+# ── §2 The vaginal microbiome (real microbiology) ─────────────────────
+
+@D micro_lactobacillus := "Lactobacillus-dominated community is the healthy reproductive-age state" :: microbiology [ok]
+  core = "In most healthy reproductive-age women the vaginal microbiota is dominated by Lactobacillus species (commonly L. crispatus, L. iners, L. gasseri, L. jensenii), which produce lactic acid (and, for some species, hydrogen peroxide / bacteriocins) and keep the lumen acidic and low-diversity."
+  community-state-types = "Ravel et al. 2011 described community state types (CSTs): several Lactobacillus-dominated CSTs plus a more diverse, lower-Lactobacillus CST; composition varies between healthy individuals and over time, so 'healthy' is a range of states, not one fixed profile."
+  l-crispatus-note = "L. crispatus dominance is generally associated with a stable, strongly acidic, protective state; L. iners-dominated communities are more transitional. Stated qualitatively — exact protective magnitudes are individual- and context-dependent."
+  |> "[@x_ravel_2011]"
+
+@D micro_bv := "bacterial vaginosis = loss of lactobacilli + raised pH + diverse anaerobes" :: microbiology [ok]
+  what = "Bacterial vaginosis (BV) is a dysbiosis: depletion of protective lactobacilli, OVERGROWTH of diverse anaerobes (e.g. Gardnerella vaginalis and associated organisms; often a polymicrobial biofilm), and a RISE in vaginal pH above ~4.5, frequently with a thin discharge and an amine ('fishy') odor."
+  diagnosis = "BV is diagnosed clinically/microscopically — Amsel criteria (clinical: discharge, pH >4.5, positive amine/whiff test, clue cells) and Nugent score (Gram-stain morphotype scoring). Diagnosis is a clinician/lab task, not a home or product judgement."
+  not-product-scope = "A cleanser does NOT diagnose or treat BV. BV management is clinical (e.g. clinician-directed antimicrobial therapy); see [@scope_disclaimer] and [@lim_not_therapeutic]."
+  |> "[@x_amsel_1983]"
+  |> "[@x_nugent_1991]"
+
+@D micro_candida := "vulvovaginal candidiasis is a distinct fungal condition (not BV, not a hygiene defect)" :: microbiology [ok]
+  what = "Vulvovaginal candidiasis ('thrush') is symptomatic overgrowth of Candida (most often C. albicans) — typically itch, vulvar irritation, and a thick discharge — and is mechanistically DIFFERENT from BV (a fungal overgrowth, not anaerobic dysbiosis). Unlike BV, vaginal pH is often near-normal."
+  not-product-scope = "It is not caused by 'insufficient washing' and is not treated by a cleanser; symptomatic candidiasis is a clinical diagnosis with antifungal management. Distinguishing BV vs candidiasis vs other causes requires a clinician."
+  |> "[@x_sobel_2007]"
+
+# ── §3 Cleansing principles (what a legitimate intimate cleanser is) ──
+
+@D clean_external_only := "external vulvar cleansing only — never internal/vaginal" :: principle [ok]
+  rule = "Legitimate intimate hygiene = gentle EXTERNAL washing of the vulva with water or a mild product, plus normal bathing. The vagina is self-cleaning ([@anat_vagina]) and must not be internally washed, douched, or 'rinsed clean'."
+  why = "Internal cleansing removes the protective lactobacilli and lactic-acid milieu the body maintains itself; the correct hygiene posture is to PROTECT the endogenous system, not to add a step to it."
+  |> "[@x_amabebe_2018]"
+
+@D clean_ph_target := "if pH-adjusted, target the VULVA (~5), not the vagina" :: principle [ok]
+  rule = "A mild external wash may be formulated mildly acidic to be compatible with vulvar SKIN (skin-surface pH is in the mildly acidic range, roughly ~5). It should NOT claim to 'restore', 'balance', or 'set' VAGINAL pH — vaginal pH (~3.5–4.5) is generated internally by lactobacilli ([@phys_estrogen_glycogen]) and is not a target an external wash can or should control."
+  honest-framing = "'pH-balanced for the vulva' is a skin-compatibility statement, not a vaginal-health claim. Conflating the two is the core mislabeling this tape guards against."
+  |> "[@x_lynch_2017]"
+  |> "[@x_amabebe_2018]"
 
-@D row_ph_0 :: womens-intimate-cleanser [ok]
-  x = "pH 정밀도"
-  x = "0.3"
-  hexa = "**0.1**"
-  x = "체감: 1/σ 연결"
+@D clean_avoid_disruptors := "fragrance, antiseptics, and douching disrupt the system" :: principle [ok]
+  rule = "Harsh surfactants, added fragrance/perfume, antiseptic/antibacterial agents, and any douching DISRUPT the vulvar skin barrier and/or the vaginal lactobacilli and are discouraged for routine intimate hygiene."
+  preferred = "Gentle, low-irritant, fragrance-free, external-only washing (often plain water suffices) is the conservative, evidence-aligned default. A product's value is in being MILD and NON-DISRUPTIVE, not in an active 'cleansing' or 'antibacterial' effect."
+  |> "[@x_chen_2017]"
+  |> "[@x_amabebe_2018]"
 
+# ── §4 Strong-evidence harm — douching ────────────────────────────────
 
-@D row_lactobacillus_1 :: womens-intimate-cleanser [ok]
-  x = "Lactobacillus 유지 %"
-  x = "60"
-  hexa = "**95**"
-  x = "체감: PF 정상 연결"
+@D harm_douching := "douching is epidemiologically associated with harm" :: harm-evidence [ok]
+  finding = "Vaginal douching is repeatedly associated in epidemiological studies with adverse reproductive-tract outcomes — including bacterial vaginosis, pelvic inflammatory disease (PID), and other adverse gynecologic/obstetric associations. Mechanistically consistent: douching flushes out protective lactobacilli and the acidic milieu."
+  causality-honesty = "These are predominantly observational associations (with reverse-causation and confounding caveats), but the direction and consistency of evidence, plus the clear mechanism, support a STRONG recommendation AGAINST douching. No protective benefit of douching is established."
+  product-implication = "An intimate product that encourages internal use or 'deep cleansing' is acting against this evidence; legitimate products are external-only ([@clean_external_only])."
+  |> "[@x_brotman_2008]"
+  |> "[@x_cottrell_2010]"
 
+# ── §5 Real-limits anchors (LATTICE_POLICY g1 — real-limits-first) ────
 
-@D row_x_2 :: womens-intimate-cleanser [ok]
-  x = "천연 성분 %"
-  x = "50"
-  hexa = "**96**"
-  x = "체감: 2σ·τ 연결"
+@D lim_vaginal_self_regulation := "the vaginal ecosystem is self-regulating" :: real-limit [ok required]
+  wall = "HARD WALL (physiological)"
+  statement = "The reproductive-age vaginal lumen maintains its acidic, Lactobacillus-dominated state endogenously (estrogen→glycogen→lactic acid; epithelial turnover; physiological discharge). An external or internal consumer product cannot 'improve', 'optimize', or 'rebalance' this self-regulating internal ecosystem."
+  consequence = "The honest ceiling of an intimate cleanser is to be a MILD, NON-DISRUPTIVE external wash — its best case is doing no harm to a system it cannot legitimately enhance."
 
+@D lim_douching_harm := "internal washing/douching is harmful, not beneficial" :: real-limit [ok required]
+  wall = "HARD WALL (epidemiological + mechanistic)"
+  statement = "Internal washing/douching is associated with BV, PID, and adverse reproductive outcomes and has no established benefit. Therefore an intimate product cannot truthfully be positioned for internal/vaginal use or as ecosystem-improving."
+  consequence = "Internal use is contraindicated; the product category is bounded to external vulvar hygiene only ([@harm_douching])."
 
-@D row_x_3 :: womens-intimate-cleanser [ok]
-  x = "임상 안전성 %"
-  x = "80"
-  hexa = "**99.9**"
-  x = "체감: 1-1/σ³ 연결"
+@D lim_ph_target_vulva := "product pH must match the VULVA, not the vagina" :: real-limit [ok required]
+  wall = "HARD WALL (target-mismatch)"
+  statement = "An external wash contacts vulvar SKIN (mildly acidic, roughly ~5), not the vaginal lumen (~3.5–4.5, internally generated). A product cannot set vaginal pH and must not claim to; the only honest pH claim is skin-compatibility with the vulva."
+  consequence = "Any 'restores vaginal pH' / 'balances intimate pH internally' claim is a target-mismatch error and a likely unsupported-efficacy claim."
 
+@D lim_not_therapeutic := "a cleanser is not a therapeutic for BV / candidiasis / STIs" :: real-limit [ok required]
+  wall = "HARD WALL (scope)"
+  statement = "BV, vulvovaginal candidiasis, trichomoniasis, and STIs are clinical diagnoses with clinical management. A cosmetic wash neither diagnoses nor treats them; symptomatic disease requires a clinician."
+  consequence = "Efficacy framing must stay within 'mild external cleansing / does not disrupt'; any disease-prevention or disease-treatment claim is out of scope and unsupported ([@scope_disclaimer])."
 
-@D row_x_4 :: womens-intimate-cleanser [ok]
-  x = "생산성"
-  x = "pH 정밀도 0.1 달성"
-  n_6 = "σ·sopfr=60"
+# ── §6 n=6 lattice stance (HONEST — no natural invariant) ─────────────
 
+@F f_lattice_fit := "lattice-fit-on-vulvovaginal-hygiene" :: governance [required deny:write]
+  pattern = "Deriving pH targets, Lactobacillus-retention percentages, 'natural-ingredient %', safety %, ingredient counts, or any efficacy/quality number FROM the n=6 lattice (σ / τ / φ / J₂ / sopfr / n=6)."
+  why = "The pre-rewrite tape did exactly this (row_ph_0: pH 0.1 from a 1/σ identity; row_lactobacillus_1: 95% retention from 'PF 정상 연결'). florea AGENTS.tape @F f_unsupported_efficacy + @D g_honesty_obligation_skincare forbid claiming a verb 'works because n=6' without the underlying biology/chemistry."
+  remedy = "Cite the real vulvovaginal-physiology / microbiome / epidemiology literature in this tape's @X entries. The lattice is not a derivation tool here."
 
-@D row_x_5 :: womens-intimate-cleanser [ok]
-  x = "신뢰성"
-  x = "실패율 1% 이하"
-  n_6 = "μ=1"
+@N n6_honest_stance := "vulvovaginal hygiene has no natural n=6 invariant" :: note [required]
+  text = "Stated plainly: vulvovaginal hygiene exposes NO natural n=6 invariant (this is an observation-not-derivation stance). Vaginal pH, Lactobacillus dominance, BV diagnostic thresholds, and ingredient/formulation choices are governed by biology, chemistry, and epidemiology — not by σ/τ/φ/J₂ lattice arithmetic. Per LATTICE_POLICY g1/g2 + lattice-as-tool, the n=6 lattice is DECLINED as a derivation tool here. This is the corrective for the audited pre-rewrite violation (see WOMENS-INTIMATE-CLEANSER.log.tape audit_governance_honesty)."
 
+# ── §7 Verifiable predictions (real, falsifiable — NOT lattice) ───────
 
-@D row_x_6 :: womens-intimate-cleanser [ok]
-  x = "표준화"
-  x = "6대 핵심 지표 확립"
-  n_6 = "n=6"
+@D tp_1 := "TP-1 douching ↔ dysbiosis" :: prediction [ok]
+  claim = "Across populations, vaginal douching is associated with higher prevalence/incidence of bacterial vaginosis and related adverse reproductive outcomes than non-douching."
+  falsifier = "If well-controlled studies show douching is neutral or protective against BV/PID, [@harm_douching] / [@lim_douching_harm] are wrong."
+  source = "[@x_brotman_2008]"
 
+@D tp_2 := "TP-2 Lactobacillus ↔ low pH" :: prediction [ok]
+  claim = "Healthy reproductive-age vaginal communities dominated by Lactobacillus correspond to a low (~<4.5) lumen pH; loss of lactobacilli corresponds with a pH rise above ~4.5 (BV-consistent)."
+  falsifier = "If Lactobacillus-dominated communities routinely show pH >4.5 with no dysbiosis, the estrogen→glycogen→lactic-acid model ([@phys_estrogen_glycogen]) is wrong."
+  source = "[@x_ravel_2011]"
 
-@D row_x_7 :: womens-intimate-cleanser [ok]
-  x = "감사/추적"
-  x = "σ=12 전수 기록"
-  n_6 = "σ(6)=12"
+@D tp_3 := "TP-3 external product ≠ ecosystem improver" :: prediction [ok]
+  claim = "An external vulvar wash, used externally, does not measurably 'improve' the internal vaginal microbiome beyond not disrupting it; the binding outcome is harm-avoidance, not enhancement."
+  falsifier = "If a controlled study shows an external cosmetic wash reproducibly improves the internal vaginal microbiome of healthy women, [@lim_vaginal_self_regulation] is wrong."
 
-# ── §2 COMPARE (현 기술 vs n=6) — 성능 비교 (ASCII) ─────────────────────────────────────────
+# ── §8 Cross-links ────────────────────────────────────────────────────
 
+@X x_florea_agents := "florea AGENTS.tape" :: governance [active]
+  scope = "@D g_honesty_obligation_skincare + @F f_unsupported_efficacy + @D g_use_hexa_bio_cli (analytic verification shells out to hexa-bio)"
 
+# ── §9 External citations (real, landmark literature) ─────────────────
 
-@D b_6_12_12_0 :: womens-intimate-cleanser [ok]
-  text = "σ(6)=12 (약수의 합) → 12 종 소스/모니터 전수"
+@X x_ravel_2011 := "Ravel J et al 2011" :: literature [active]
+  ref = "Ravel J, Gajer P, Abdo Z, et al. Vaginal microbiome of reproductive-age women. Proc Natl Acad Sci USA 2011;108 Suppl 1:4680–4687. (Defined Lactobacillus-dominated community state types.)"
 
+@X x_amsel_1983 := "Amsel R et al 1983" :: literature [active]
+  ref = "Amsel R, Totten PA, Spiegel CA, Chen KCS, Eschenbach D, Holmes KK. Nonspecific vaginitis: diagnostic criteria and microbial and epidemiologic associations. Am J Med 1983;74:14–22. (Amsel clinical criteria for bacterial vaginosis.)"
 
-@D b_6_4_4_1 :: womens-intimate-cleanser [ok]
-  text = "τ(6)=4 (약수의 개수) → 4 주기 표준 클록"
+@X x_nugent_1991 := "Nugent RP et al 1991" :: literature [active]
+  ref = "Nugent RP, Krohn MA, Hillier SL. Reliability of diagnosing bacterial vaginosis is improved by a standardized method of Gram stain interpretation. J Clin Microbiol 1991;29:297–301. (Nugent Gram-stain scoring for BV.)"
 
+@X x_brotman_2008 := "Brotman RM et al 2008" :: literature [active]
+  ref = "Brotman RM, Klebanoff MA, Nansel TR, et al. A longitudinal study of vaginal douching and bacterial vaginosis incidence. Am J Epidemiol 2008;168:188–196. (Epidemiologic association of douching with BV; see also the broader douching-harm literature, Brotman/Klebanoff group, 2000s.)"
 
-@D b_6_2_2_2 :: womens-intimate-cleanser [ok]
-  text = "φ(6)=2 (오일러 토션) → 2대칭 중복 설계"
+@X x_amabebe_2018 := "Amabebe E, Anumba DOC 2018" :: literature [active]
+  ref = "Amabebe E, Anumba DOC. The vaginal microenvironment: the physiology and role of lactobacilli in maintaining the acidic, low-diversity, protective state. Front Med (Lausanne) 2018;5:181. (Review — lactic-acid/pH physiology; secondary review named by primary authors/era where exact volume detail is uncertain.)"
 
-# ── §3 REQUIRES (필요한 요소) — 선행 도메인 ─────────────────────────────────────────
+@X x_lynch_2017 := "Lynch / vulvar dermatology reference" :: literature [active]
+  ref = "Standard vulvar dermatology / anatomy reference establishing the vulva as external mucocutaneous skin with a mildly acidic surface pH and external-only cleansing relevance (vulvar dermatology literature, Lynch & Edwards lineage; named by author/era — no fabricated volume/page numbers asserted)."
 
+@X x_odoherty_2014 := "estrogen–glycogen–vaginal-flora physiology reference" :: literature [active]
+  ref = "Reproductive-physiology literature establishing the estrogen→epithelial-glycogen→Lactobacillus→lactic-acid axis and its life-stage (pre-pubertal / reproductive / post-menopausal) dependence (named by topic/era; primary numeric detail kept qualitative — no fabricated citation specifics)."
 
+@X x_sobel_2007 := "Sobel JD 2007" :: literature [active]
+  ref = "Sobel JD. Vulvovaginal candidiasis. Lancet 2007;369:1961–1971. (Review — clinical distinction of vulvovaginal candidiasis from bacterial vaginosis.)"
 
-@D row_bio_pharma_0 :: womens-intimate-cleanser [ok]
-  x = "bio-pharma"
-  x = "7"
-  x = "10"
-  x = "+3"
-  x = "바이오의약"
+@X x_cottrell_2010 := "Cottrell BH 2010" :: literature [active]
+  ref = "Cottrell BH. An updated review of evidence to discourage douching. MCN Am J Matern Child Nurs 2010;35:102–107. (Evidence synthesis discouraging vaginal douching; corroborates the douching-harm association.)"
 
-
-@D row_immunology_1 :: womens-intimate-cleanser [ok]
-  x = "immunology"
-  x = "7"
-  x = "10"
-  x = "+3"
-  x = "면역학"
-
-
-@D row_mens_intimate_cleanser_2 :: womens-intimate-cleanser [ok]
-  x = "mens-intimate-cleanser"
-  x = "7"
-  x = "10"
-  x = "+3"
-  x = "남성 청결제"
-
-# ── §4 STRUCT (시스템 구조) — System Architecture (ASCII) ─────────────────────────────────────────
-
-
-
-@D row_core_0 :: womens-intimate-cleanser [ok]
-  x = "Core 자유도"
-  x = "6"
-  n_6 = "n = 6"
-  x = "최소 완전수"
-  x = "EXACT"
-
-
-@D row_input_1 :: womens-intimate-cleanser [ok]
-  x = "Input 소스 수"
-  x = "12"
-  n_6 = "σ = 12"
-  x = "OEIS A000203"
-  x = "EXACT"
-
-
-@D row_process_2 :: womens-intimate-cleanser [ok]
-  x = "Process 주기"
-  x = "4"
-  n_6 = "τ = 4"
-  x = "OEIS A000005"
-  x = "EXACT"
-
-
-@D row_symmetry_3 :: womens-intimate-cleanser [ok]
-  x = "Symmetry 축"
-  x = "2"
-  n_6 = "φ = 2"
-  x = "OEIS A000010"
-  x = "EXACT"
-
-
-@D row_output_4 :: womens-intimate-cleanser [ok]
-  x = "Output 모니터"
-  x = "24"
-  n_6 = "J₂ = 2σ"
-  x = "전수 감사"
-  x = "EXACT"
-
-
-@D row_fallback_5 :: womens-intimate-cleanser [ok]
-  x = "Fallback 채널"
-  x = "5"
-  n_6 = "sopfr = 5"
-  x = "독립 경로"
-  x = "EXACT"
-
-
-@D row_x_8 :: womens-intimate-cleanser [ok]
-  x = "실패율 %"
-  x = "1"
-  n_6 = "μ = 1"
-  x = "목표 TVAC"
-  x = "EXACT"
-
-
-@D row_exact_9 :: womens-intimate-cleanser [ok]
-  x = "EXACT 비율 %"
-  x = "93"
-  n_6 = "(sigma·phi/n·tau)·93"
-  x = "자기정리"
-  x = "EXACT"
-
-# ── §5 FLOW (데이터/에너지 플로우) — Flow (ASCII) ─────────────────────────────────────────
-
-
-
-@D row_1_0 :: womens-intimate-cleanser [ok]
-  rank = "1"
-  core = "n=6"
-  input = "σ=12"
-  process = "τ=4"
-  output = "J2=24"
-  monitor = "σ=12"
-  n6 = "93%"
-  x = "**최적**"
-
-
-@D row_2_1 :: womens-intimate-cleanser [ok]
-  rank = "2"
-  core = "n=6"
-  input = "σ-φ=10"
-  process = "τ=4"
-  output = "J2=24"
-  monitor = "σ=12"
-  n6 = "90%"
-  x = "대안"
-
-
-@D row_3_2 :: womens-intimate-cleanser [ok]
-  rank = "3"
-  core = "n=6"
-  input = "sopfr=5"
-  process = "τ=4"
-  output = "φ=2"
-  monitor = "σ=12"
-  n6 = "85%"
-  x = "간소"
-
-# ── §7 VERIFY (Python 검증) ─────────────────────────────────────────
-
-
-
-@D row_tp_1_0 :: womens-intimate-cleanser [ok]
-  x = "TP-1"
-  x = "pH 정밀도 최적값"
-  x = "σ·sopfr/10"
-  x = "0.1"
-  tier = "1"
-
-
-@D row_tp_2_1 :: womens-intimate-cleanser [ok]
-  x = "TP-2"
-  x = "τ=4 주기 동기"
-  x = "τ(6)=4"
-  x = "4 ± 0"
-  tier = "1"
-
-
-@D row_tp_3_2 :: womens-intimate-cleanser [ok]
-  x = "TP-3"
-  x = "φ=2 대칭 중복"
-  x = "φ(6)=2"
-  x = "2 ± 0"
-  tier = "1"
-
-
-@D row_tp_4_3 :: womens-intimate-cleanser [ok]
-  x = "TP-4"
-  x = "σ=12 모니터 수"
-  x = "σ(6)=12"
-  x = "12 ± 0"
-  tier = "1"
-
-
-@D row_tp_5_4 :: womens-intimate-cleanser [ok]
-  x = "TP-5"
-  x = "sopfr=5 채널"
-  x = "sopfr(6)=5"
-  x = "5 ± 0"
-  tier = "1"
-
-
-@D row_tp_6_5 :: womens-intimate-cleanser [ok]
-  x = "TP-6"
-  x = "J2=24 지표"
-  x = "2·σ=24"
-  x = "24 ± 0"
-  tier = "1"
-
-
-@D row_tp_7_6 :: womens-intimate-cleanser [ok]
-  x = "TP-7"
-  x = "n/φ=3 중복도"
-  x = "6/2=3"
-  x = "3 ± 0"
-  tier = "1"
-
-
-@D row_tp_8_7 :: womens-intimate-cleanser [ok]
-  x = "TP-8"
-  x = "σ·τ=48 합성"
-  x = "12·4=48"
-  x = "48 ± 0"
-  tier = "1"
-
-
-@D row_tp_9_8 :: womens-intimate-cleanser [ok]
-  x = "TP-9"
-  x = "σ·φ=n·τ 핵심"
-  x = "12·2=6·4=24"
-  x = "24 = 24"
-  tier = "1"
-
-
-@D row_tp_10_9 :: womens-intimate-cleanser [ok]
-  x = "TP-10"
-  x = "EXACT ≥ 90%"
-  x = "36 파라미터"
-  x = "≥ 0.93"
-  tier = "2"
-
-
-@D b_n_6_e_planck_h_c_n_6_10 :: womens-intimate-cleanser [ok]
-  text = "반례 (n=6 무관): 기본전하 e, Planck h, π, 광속 c — 이들은 n=6 유도 불가, 솔직히 인정"
-
-
-@D b_falsifier_ph_85_exact_80_sensiti_11 :: womens-intimate-cleanser [ok]
-  text = "Falsifier: pH 정밀도 측정치 < 85% 이면 공식 폐기 / EXACT 비율 < 80% 이면 설계 철회 / sensitivity 흔들 때 최적 깨지면 볼록성 가설 기각"
-
-
-@D b_13_13_pass_n_6_12 :: womens-intimate-cleanser [ok]
-  text = "예상: **13/13 PASS (n=6 정직성 검증)**"
-
-
-@D b_n_6_n_n_6_13 :: womens-intimate-cleanser [ok]
-  text = "근거: n=6 이 최소 완전수이고 `σ·φ = n·τ` 이 n=6 에서 유일 성립"
-
-# ── §6 EVOLVE (Mk.I~V 진화) ─────────────────────────────────────────
-
-
-# ── §8 IDEAS ─────────────────────────────────────────
-
-
-# ── §9 METRICS ─────────────────────────────────────────
-
-
-# ── §10 RISKS ─────────────────────────────────────────
-
-
-# ── §11 DEPENDENCIES ─────────────────────────────────────────
-
-
-# ── §12 TIMELINE ─────────────────────────────────────────
-
-
-# ── §13 TOOLS ─────────────────────────────────────────
-
-
-# ── §14 TEAM ─────────────────────────────────────────
-
-
-# ── §15 REFERENCES ─────────────────────────────────────────
-
-
-
+@X x_chen_2017 := "intimate-hygiene practice / mild-cleansing reference" :: literature [active]
+  ref = "Women's intimate-hygiene practice literature supporting gentle, fragrance-free, external-only vulvar cleansing and discouraging harsh/antiseptic/internal products (named by topic/era; quantitative specifics kept qualitative — no fabricated citation detail)."
