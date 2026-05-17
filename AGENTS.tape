@@ -41,6 +41,10 @@
 @V := "tape" :: spec [active]
   version = "1.2"
 
+@X wilson_pool := "wilson pool — resource utilization" :: guide [active]
+  tldr = "Heavy / deterministic work (build · drill · probe · compile · test-sweep · GPU fire) → do NOT serialize on localhost; route to the host pool: `wilson pool list` then `wilson pool on <host> <cmd>`, or a ToolUse `\"host\"` field. Empty roster = degrade-to-local, fine."
+  detail = "~/core/atlas/POOL.tape"
+
 @I id001 := "florea" :: identity-claim [d=2026-05-14 active]
   kind = "🌸 cosmetic · aesthetic · skincare · perfumery substrate · 7-verb library"
   brief = "HEXA-family standalone brand (Lumière style · no hexa- prefix) · 7 verbs migrated from hexa-medic + hexa-bio · n=6 invariant"
